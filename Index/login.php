@@ -16,7 +16,7 @@
           <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
             <div class="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
               <img
-                src="\Gamalex\Imagenes\draw2.jpg"
+                src="\ProyectoGamalex\Imagenes\draw2.jpg"
                 class="w-full"
               />
             </div>

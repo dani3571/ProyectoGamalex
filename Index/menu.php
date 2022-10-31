@@ -142,7 +142,7 @@
               </div>
               <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
                 <figure>
-                  <img src="../img/MicrosoftTeams-image (59).png" class="w-96 h-64">
+                  <img src="../Imagenes/MicrosoftTeams-image (59).png" class="w-96 h-64">
                   <figcaption>
                     <h2>vitaminas</h2>
                     <p>para au,mnetra las defenzas de como es posible.</p>
