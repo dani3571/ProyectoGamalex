@@ -4,12 +4,15 @@
         <title>Laboratorios</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/estilosCRUDS.css">
-       
+       <link rel="stylesheet" href="../css/estilosCRUDS.css">
+        <script src="https://cdn.tailwindcss.com"></script>
       <!--Aqui debe estar el header  <link rel="stylesheet" href="../css/header.css"> -->
     </head>
+    <?php
+       include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/header.php");
+       ?>
     <body>
-       
+     
         <div class="form">
             <form action="./insertarLaboratorio.php" method="POST">
                 <h2 class="form_title">Ingrese datos del laboratorio</h2>
@@ -33,5 +36,9 @@
                 </div>
             </form>
         </div>
+        <?php
+       include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/footer.php");
+       ?>
     </body>
+    
 </html>
