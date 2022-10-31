@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Laboratorios</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/estilosCRUDS.css">
+       
+      <!--Aqui debe estar el header  <link rel="stylesheet" href="../css/header.css"> -->
+    </head>
+    <body>
+       
+        <div class="form">
+            <form action="./insertarLaboratorio.php" method="POST">
+                <h2 class="form_title">Ingrese datos del laboratorio</h2>
+                <div class="form_container">
+                    <div class="form_group">
+                        <input type="text" id="IdLaboratorio" class="form_input" placeholder=" " name="IdLaboratorio" >
+                        <label for="IdLaboratorio" class="form_label">IdLaboratorio:</label>
+                        <span class="form_line"></span>
+                    </div>
+                    <div class="form_group">
+                        <input type="text" id="Nombre" class="form_input" placeholder=" " name="Nombre" >
+                        <label for="Nombre" class="form_label">Nombre:</label>
+                        <span class="form_line"></span>
+                    </div>
+                    <div class="form_group">
+                        <input type="text" id="Direccion" class="form_input" placeholder=" " name="Direccion" >
+                        <label for="Direccion" class="form_label">Direccion:</label>
+                        <span class="form_line"></span>
+                    </div>
+                        <input type="submit" class="form_submit" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

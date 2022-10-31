@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Laboratorios</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/estilosCRUDS.css">
+      
+      <!--Aqui debe estar el header  <link rel="stylesheet" href="../css/header.css"> -->
+    </head>
+    <body>
+    
+        <div class="form">
+            <form action="./insertarProducto.php" method="POST">
+                <h2 class="form_title">Ingrese datos del Usuario</h2>
+                <div class="form_container">
+                    <div class="form_group">
+                        <input type="text" id="IdProducto" class="form_input" placeholder=" " name="IdProducto" >
+                        <label for="IdProducto" class="form_label">IdUsuario:</label>
+                        <span class="form_line"></span>
+                    </div>
+                    <div class="form_group">
+                        <input type="text" id="Nombre" class="form_input" placeholder=" " name="Nombre" >
+                        <label for="Nombre" class="form_label">Nombre:</label>
+                        <span class="form_line"></span>
+                    </div>
+                    <div class="form_group">
+                        <input type="text" id="Cantidad" class="form_input" placeholder=" " name="Cantidad" >
+                        <label for="Cantidad" class="form_label">Apellido:</label>
+                        <span class="form_line"></span>
+                    </div>
+                    <div class="form_group">
+                        <input type="text" id="PrecioUnidad" class="form_input" placeholder=" " name="PrecioUnidad" >
+                        <label for="PrecioUnidad" class="form_label">Usuario:</label>
+                        <span class="form_line"></span>
+                    </div>
+                    <div class="form_group">
+                        <input type="text" id="PrecioTotal" class="form_input" placeholder=" " name="PrecioTotal" >
+                        <label for="PrecioTotal" class="form_label">Correo:</label>
+                        <span class="form_line"></span>
+                    </div>
+                    <div class="form_group">
+                        <input type="text" id="PrecioTotal" class="form_input" placeholder=" " name="PrecioTotal" >
+                        <label for="PrecioTotal" class="form_label">Contraseña:</label>
+                        <span class="form_line"></span>
+                    </div>
+                    <input type="submit" class="form_submit" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
