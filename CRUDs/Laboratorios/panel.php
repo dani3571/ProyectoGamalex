@@ -46,7 +46,7 @@
                 <th><?php echo $Nombre; ?></th>
                 <th><?php echo $Direccion; ?></th>
                 <td> 
-		        <a class="btn btn-sm btn-danger" id="delete_product" data-id="<?php echo $IdLaboratorio; ?>" href="javascript:void(0)"><i class="glyphicon glyphicon-trash"></i></a>
+		        <a class="btn btn-sm btn-danger" id="delete_product" data-id="<?php echo $IdLaboratorio; ?>" href="javascript:void(0)"><i class="glyphicon glyphicon-trash">Eliminar</i></a>
 		        </td>
 		        </tr>
 				<?php

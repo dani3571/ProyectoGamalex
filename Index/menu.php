@@ -30,7 +30,7 @@
      //Si no se añade desde los dos puntos da error
      //para evitarlo podemos hacer un if/else con rutas posibles
      //y asi no tener conflicto con el path de xampp
-    include("../EstructuraCuerpo/header.php");
+      include("../EstructuraCuerpo/header.php");
     ?>
     
     <!-- Carrucel de imagenes -->
