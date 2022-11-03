@@ -1,17 +1,13 @@
 <?php
-include("../conexion.php");
-$con=conectar();
+$conex = mysqli_connect("localhost","root","","farmaciagamalex");
 
-$IdLaboratorio=$_POST['IdLaboratorio'];
 $Nombre=$_POST['Nombre'];
 $Direccion=$_POST['Direccion'];
 
-$sql="INSERT INTO laboratorio VALUES('$IdLaboratorio','$Nombre','$Direccion')";
-$query= mysqli_query($con,$sql);
+$sql="INSERT INTO laboratorio(Nombre, Direccion, Estado)
+ VALUES('$Nombre','$Direccion',1)";
+$query= mysqli_query($conex,$sql);
 
-if($query){
-    Header("Location: Index.html");
-}else {
 
-}
+
 ?>
