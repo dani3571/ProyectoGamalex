@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Laboratorios</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/estilosCRUDS.css">
+        <link rel="stylesheet" href="../css/header.css">
+    </head>
+    <body>
+        <header id="cabecera">
+            <nav class="navegacion">
+                <ul>
+                    <li class="submenu" style="cursor: pointer;">
+                        <a target="top">Mision - Vision</a>
+                    </li>
+                    <li class="submenu" style="cursor: pointer;">
+                      <a target="top">Productos</a>
+                    </li>
+                    <li class="submenu" style="cursor: pointer;">
+                      <a target="top">Descargar app</a>
+                    </li>
+                    <li class="submenu" style="cursor: pointer;">
+                        <a target="top">Login</a>
+                    </li>
+                </ul>
+                <a id="home" href="" style="margin-left: 20px;">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </a>
+              </nav>
+           
+        </header>
+        <div class="form">
+            <form action="./insertarVenta.php" method="POST">
+                <h2 class="form_title">Ingrese datos de la Venta</h2>
+                <div class="form_container">
+                    <div class="form_group">
+                        <input type="text" id="IdProducto" class="form_input" placeholder=" " name="IdProducto" >
+                        <label for="IdProducto" class="form_label">IdVenta:</label>
+                        <span class="form_line"></span>
+                    </div>
+                    <div class="form_group">
+                        <input type="text" id="Nombre" class="form_input" placeholder=" " name="Nombre">
+                        <label for="Nombre" class="form_label">Producto:</label>
+                        <span class="form_line"></span>
+                    </div>
+                    <div class="form_group">
+                        <input type="text" id="Cantidad" class="form_input" placeholder=" " name="Cantidad" >
+                        <label for="Cantidad" class="form_label">Cantidad:</label>
+                        <span class="form_line"></span>
+                    </div>
+                    <input type="submit" class="form_submit" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
