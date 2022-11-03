@@ -12,6 +12,6 @@ $query= mysqli_query($con,$sql);
 if($query){
     Header("Location: Index.html");
 }else {
-    
+
 }
 ?>
