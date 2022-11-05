@@ -39,18 +39,17 @@
                     <div class="flex space-x-4">
                     <!-- Opciones de la barra -->
                       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                      <a href="../../Index/login.php" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Mision/Vision</a>
-          
-                      <a href="../CRUDs/Ventas/Index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ventas</a>
-          
-                      <a href="../CRUDs/Productos/Index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Productos</a>
-          
+                      <a href="../Index/menu.php" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Mision/Vision</a>
+                      <a href="/ProyectoGamalex/Productos/product.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Listado Productos</a>         
                       <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Descargar App</a>
-      
+ 
+                      <a href="/ProyectoGamalex/CRUDs/Ventas/Index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ventas</a>
           
-                       <a href="../CRUDs/Laboratorios/panel.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Laboratorios</a>
+                      <a href="/ProyectoGamalex/CRUDs/Productos/Index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Productos</a>
+          
+                      <a href="/ProyectoGamalex/CRUDs/Laboratorios/Index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Laboratorios</a>
     
-                       <a href="../CRUDs/Usuarios/Index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Usuarios</a>
+                      <a href="/ProyectoGamalex/CRUDs/Usuarios/Index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Usuarios</a>
                     </div>
                   </div>
                 </div>

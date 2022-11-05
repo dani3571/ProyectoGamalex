@@ -10,7 +10,12 @@
     <link href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
       <!--Aqui debe estar el header  <link rel="stylesheet" href="../css/header.css"> -->
-    </head>
+      
+         <div class="header-container">
+            <?php
+             include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/header.php");
+            ?>
+        </div>
     <body>
     
         <div class="form">

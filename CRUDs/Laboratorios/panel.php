@@ -6,9 +6,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/estilosCRUDS.css">
+        <script src="https://cdn.tailwindcss.com"></script>
     </head> 
     <body>
- 
+    <div class="header-container">
+            <?php
+             include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/header.php");
+            ?>
+        </div>
       <!--Aqui debe estar el header-->
         <div class="main-container">
             <div class="titulo">

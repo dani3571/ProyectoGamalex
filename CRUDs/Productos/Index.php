@@ -8,13 +8,18 @@
         <script src="https://cdn.tailwindcss.com"></script>
     </head> 
     <body>
+    <div class="header-container">
+            <?php
+                include("../../EstructuraCuerpo/header.php");
+            ?>
+        </div>
         <div class="main-container">
             <div class="titulo">
                 <h1>Registro de Productos</h1>
             </div>
             <div class="formulario">
                 <div class="crear">
-                    <a class="link_crear" href="CrearProducto.html">CREAR</a>
+                    <a class="link_crear" href="CrearProducto.php">CREAR</a>
                 </div>
                 <table class="tabla">
                     <thead>
@@ -46,6 +51,7 @@
                     </tbody>
                 </table>
             </div>
+            <br><br><br><br>
         </div>
     </body>
 </html>

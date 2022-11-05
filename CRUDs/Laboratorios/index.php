@@ -3,10 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Ajax SweetAlert PHP & MySQL</title>
-<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css" />
+
 <link rel="stylesheet" href="assets/swal2/sweetalert2.min.css" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+
 <div class="container">
     	
         <div class="page-header">

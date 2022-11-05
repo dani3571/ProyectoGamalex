@@ -10,9 +10,11 @@
     </head>
     
     <body>
-    <?php 
-     include("/xampp/htdocs/Gamalex/EstructuraCuerpo/header.php");
-       ?>
+    <div class="header-container">
+            <?php
+                include("../../EstructuraCuerpo/header.php");
+            ?>
+        </div>
     
         <div class="form">
             <form action="./insertarProducto.php" method="POST">
@@ -58,8 +60,5 @@
             </form>
         </div>
     </body>
-    <?php 
-       include("/xampp/htdocs/Gamalex/EstructuraCuerpo/footer.php");
-       ?>
-    
+
 </html>

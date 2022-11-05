@@ -8,11 +8,13 @@
         <script src="https://cdn.tailwindcss.com"></script>
     </head> 
     <body>
-        <div class="head_container">
+ 
+        <div class="header-container">
             <?php
                 include("../../EstructuraCuerpo/header.php");
             ?>
         </div>
+
         <div class="main-container">
             <div class="titulo">
                 <h1>Registro de Usuarios</h1>
@@ -62,8 +64,12 @@
                             <th><a class="link_eliminar" href="eliminar.php">Eliminar</a></th>   
                         </tr>
                     </tbody>
-                </table>
-            </div>
+                </table>           
+            </div>  
+            <br><br><br><br>   
         </div>
+   
     </body>
+
 </html>
+

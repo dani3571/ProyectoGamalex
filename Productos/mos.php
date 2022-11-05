@@ -30,7 +30,7 @@ if($inc){
             <h3 class="text-sm text-gray-700">
               <a href="#">
                 <span aria-hidden="true" class="absolute inset-0"></span>
-                <p align="center" style="font-size: 16px;" ><strong><a href="#"> <?php echo $nombre;?></a></strong></p>
+                <p align="left" style="font-size: 16px;" ><strong><a href="#"> <?php echo $nombre;?></a></strong></p>
               </a>
             </h3>
             <p style="font-size:18px; color:purple;"class="text-sm font-medium text-gray-900" >Bs. <?php echo $precioUnidad;?></p>
