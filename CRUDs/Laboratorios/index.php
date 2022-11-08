@@ -10,22 +10,17 @@
 <body>
 
 <div class="header-container">
-        <div id="load-products"></div> <!-- products will be load here -->
+        <div id="load-products"></div>
 </div>  
    
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
 <script src="assets/swal2/sweetalert2.min.js"></script>
-
 
 <script>
 	$(document).ready(function(){
-		
 		readLaboratory(); 
-		
 		$(document).on('click', '#delete_laboratory', function(e){
-			
 			var productId = $(this).data('id');
 			SwalDelete(productId);
 			e.preventDefault();
@@ -34,8 +29,7 @@
 	});
 	
 	function SwalDelete(productId){
-		
-		swal({
+		  swal({
 			title: 'Estas seguro?',
 			text: "Se borrará de forma permanente!",
 			type: 'warning',

@@ -39,7 +39,7 @@
                     <div class="flex space-x-4">
                     <!-- Opciones de la barra -->
                       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                      <a href="../Index/menu.php" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Mision/Vision</a>
+                      <a href="/ProyectoGamalex/Index/menu.php" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Mision/Vision</a>
                       <a href="/ProyectoGamalex/Productos/product.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Listado Productos</a>         
                       <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Descargar App</a>
  
