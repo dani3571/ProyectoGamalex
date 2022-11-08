@@ -2,34 +2,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Ajax SweetAlert PHP & MySQL</title>
+<title></title>
 
 <link rel="stylesheet" href="assets/swal2/sweetalert2.min.css" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 
-<div class="container">
-    	
-        <div class="page-header">
-        </div>
-        
+<div class="header-container">
         <div id="load-products"></div> <!-- products will be load here -->
-    
-    </div>
+</div>  
    
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
 <script src="assets/swal2/sweetalert2.min.js"></script>
 
 
 <script>
 	$(document).ready(function(){
 		
-		readProducts(); /* it will load products when document loads */
+		readLaboratory(); 
 		
-		$(document).on('click', '#delete_product', function(e){
+		$(document).on('click', '#delete_laboratory', function(e){
 			
 			var productId = $(this).data('id');
 			SwalDelete(productId);
@@ -61,7 +56,7 @@
 			     })
 			     .done(function(response){
 			     	swal('Eliminado!', response.message, response.status);
-					readProducts();
+					readLaboratory();
 			     })
 			     .fail(function(){
 			     	swal('Oops...', 'Algo salió mal!', 'error');
@@ -73,7 +68,7 @@
 		
 	}
 	
-	function readProducts(){
+	function readLaboratory(){
 		$('#load-products').load('panel.php');	
 	}
 	

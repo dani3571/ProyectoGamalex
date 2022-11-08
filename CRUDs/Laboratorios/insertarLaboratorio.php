@@ -1,17 +1,16 @@
 <?php
-$conex = mysqli_connect("localhost","root","","farmaciagamalex");
-
+include('/xampp/htdocs/ProyectoGamalex/CRUDs/conexion.php');
+$con = conectar();
 $Nombre=$_POST['Nombre'];
 $Direccion=$_POST['Direccion'];
 
 $sql="INSERT INTO laboratorio(Nombre, Direccion, Estado)
  VALUES('$Nombre','$Direccion',1)";
-$query= mysqli_query($conex,$sql);
+$query= mysqli_query($con,$sql);
 
 if($query){
-    Header("Location: Index.php");
-}else {
-    
-}
+    Header("Location: index.php");
 
+}else {   
+}
 ?>

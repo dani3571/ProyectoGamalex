@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,7 +50,9 @@
                 <th><?php echo $Nombre; ?></th>
                 <th><?php echo $Direccion; ?></th>
                 <td> 
-		        <a class="btn btn-sm btn-danger" id="delete_product" data-id="<?php echo $IdLaboratorio; ?>" href="javascript:void(0)"><i class="glyphicon glyphicon-trash">Eliminar</i></a>
+              
+                <a href="EditarLaboratorio.php?id=<?php echo $row['IdLaboratorio']?>" class="link_editar">Editar</a>
+                <a class="link_eliminar" id="delete_laboratory" data-id="<?php echo $IdLaboratorio; ?>" href="javascript:void(0)"><i class="glyphicon glyphicon-trash">Eliminar</i></a>
 		        </td>
 		        </tr>
 				<?php
