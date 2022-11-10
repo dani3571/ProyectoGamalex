@@ -1,16 +1,22 @@
 <?php
+
 include("../conexion.php");
-$con=conectar();
+$con = conectar();
 
-$IdLaboratorio=$_POST['IdLaboratorio'];
 $Nombre=$_POST['Nombre'];
-$Direccion=$_POST['Direccion'];
+$Cantidad=$_POST['Cantidad'];
+$PrecioUnidad=$_POST['PrecioUnidad'];
+$PrecioTotalProducto=$_POST['PrecioTotalProducto'];
+$Descripcion=$_POST['Descripcion'];
+$IdLaboratorio=$_POST['IdLaboratorio'];
 
-$sql="INSERT INTO laboratorio VALUES('$IdLaboratorio','$Nombre','$Direccion')";
+$sql="INSERT INTO producto (Nombre, Cantidad, PrecioUnidad, PrecioTotalProducto, Descripcion, IdLaboratorio)
+VALUES('$Nombre','$Cantidad','$PrecioUnidad','$PrecioTotalProducto','$Descripcion', $IdLaboratorio)";
+
 $query= mysqli_query($con,$sql);
 
 if($query){
-    Header("Location: alumno.php");
+    Header("Location: Index.php");
 }else {
     
 }
