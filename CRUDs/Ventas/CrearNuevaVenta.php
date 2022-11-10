@@ -1,4 +1,17 @@
+<?php 
+    include("../conexion.php");
+    $con=conectar();
+    $sql1="SELECT Max(IdVenta) as IdVenta FROM venta";
+    $query1=mysqli_query($con,$sql1);
+    $numeroVenta=mysqli_fetch_array($query1);
 
+    $sql2 = "SELECT * FROM producto";
+    $query2 = mysqli_query($con,$sql2);
+    $sql3 = "SELECT * FROM producto";
+    $query3 = mysqli_query($con,$sql3); 
+    $sql4 = "SELECT * FROM producto";
+    $query4 = mysqli_query($con,$sql4); 
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,7 +27,7 @@
                     
                     const tiempoTranscurrido = Date.now();
                     const hoy = new Date(tiempoTranscurrido);
-                    document.getElementById('Fecha').value = hoy.toLocaleDateString().replace("/","-").replace("/","-");
+                    document.getElementById('Fecha').value = hoy.toLocaleDateString().replace("/","-").replace("/","-").split('-').reverse().join('-');
                 }
             );
             $(document).on('submit','#evento_formulario',function(event){
@@ -34,25 +47,23 @@
                     //console.log(tblDatos[i].children);
                 }*/
                 var fechaVenta = document.getElementById('Fecha').value;
-                var cantidad = document.getElementById('PrecioTotal').value;
+                var cantidad = parseInt(document.getElementById('Total').innerHTML);
                 $.ajax({
                         url: "insertarNuevaVenta.php",
                         method: "post",
                         data: {FechaVenta : fechaVenta, Cantidad: cantidad}
                 })
                 for (var i = 0; i < tblDatos.length; i++) {
-                    var IdProducto = tblDatos[i].children[0].innerHTML;
+                    var idVenta = document.getElementById('numeroVenta').value;
+                    var idProducto = tblDatos[i].children[0].innerHTML;
                     var Producto = tblDatos[i].children[1].innerHTML;
                     var Precio = tblDatos[i].children[2].innerHTML;
                     var Cantidad = tblDatos[i].children[3].innerHTML;
                     var Subtotal = tblDatos[i].children[4].innerHTML;
                     $.ajax({
-                        url: "insertarNuevaVenta.php",
+                        url: "insertarDetalleVenta.php",
                         method: "post",
-                        data: {idproducto : IdProducto},
-                        success: function(data){
-                            //TO-DO
-                        }
+                        data: {IdVenta: idVenta, IdProducto : idProducto}
                     })
                 }
                 /*
@@ -163,18 +174,26 @@
                             <div class="form_group">
                                 <select id="Productos" class="form_input" name="Productos">
                                     <option>--Seleccione un producto--</option>
-                                    <option>Ibuprofeno</option>
-                                    <option>Paracetamol</option>
-                                    <option>Amoxicilina</option>   
+                                    <?php
+                                        while($productos = mysqli_fetch_array($query4)){
+                                    ?>
+                                        <option><?php  echo $productos['Nombre']?> </option>   
+                                    <?php 
+                                        }
+                                    ?> 
                                 </select>
                                 <label for="Productos" class="form_label">Producto:</label>
                             </div>
                             <div class="form_group">
                                 <select id="PrecioIndividual" class="form_input" name="PrecioIndividual" disabled>
                                     <option>-----</option>
-                                    <option>10</option>
-                                    <option>20</option>
-                                    <option>5</option>   
+                                    <?php
+                                        while($productos = mysqli_fetch_array($query2)){
+                                    ?>
+                                        <option><?php  echo $productos['PrecioUnidad']?> </option>   
+                                    <?php 
+                                        }
+                                    ?>
                                 </select>
                                 <label for="PrecioIndividual" class="form_label">Precio individual:</label>
                             </div>
@@ -193,9 +212,17 @@
                             <div class="form_group">
                                 <select id="CantidadDisponible" class="form_input" name="CantidadDisponible" disabled>
                                     <option>-----</option>
+                                    <?php
+                                        while($productos = mysqli_fetch_array($query3)){
+                                    ?>
+                                        <option><?php  echo $productos['Cantidad']?> </option>   
+                                    <?php 
+                                        }
+                                    ?>
+                                    <!--<option>-----</option>
                                     <option>40</option>
                                     <option>20</option>
-                                    <option>13</option>   
+                                    <option>13</option>-->
                                 </select>
                                 <label for="CantidadDisponible" class="form_label">Cantidad disponible:</label>
                             </div>
@@ -204,8 +231,9 @@
                                 <label for="PrecioTotal" class="form_label">Precio total:</label>
                                 <span class="form_line"></span>
                             </div>
+                            
                             <div class="form_group">
-                                <input type="number" id="numeroVenta" class="form_input" placeholder=" " value="0" min="0" name="numeroVenta" readonly>
+                                <input type="number" id="numeroVenta" class="form_input" placeholder=" " value="<?php echo $numeroVenta['IdVenta']+1 ?>" min="0" name="numeroVenta" readonly>
                                 <label for="numeroVenta" class="form_label">Numero de venta:</label>
                                 <span class="form_line"></span>
                             </div>

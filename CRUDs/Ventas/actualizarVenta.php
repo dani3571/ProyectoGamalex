@@ -1,12 +1,13 @@
 <?php 
     include("../conexion.php");
     $con=conectar();
-    $sql="SELECT *  FROM venta inner join producto on venta.IdProducto = producto.IdProducto";
+    $sql="SELECT *  FROM Usuario";
     $query=mysqli_query($con,$sql);
     $id=$_GET['id'];
     $sql2="SELECT * FROM venta WHERE IdVenta='$id'";
     $query2=mysqli_query($con,$sql2);
     $row2=mysqli_fetch_array($query2);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,11 +26,16 @@
         </div>
         <div class="form">
             <form action="./updateVenta.php" method="POST">
-                <h2 class="form_title">Ingrese datos de la Venta</h2>
+                <h2 class="form_title">Actualize los datos de la Venta</h2>
                 <div class="form_container">
-                    <input type="hidden" name="IdVenta" value="<?php echo $row2['IdVenta']  ?>">
                     <div class="form_group">
-                        <select id="Producto" class="form_input" name="Producto">
+                        <input type="number" id="IdVenta" placeholder=" " name="IdVenta"  class="form_input"value="<?php echo $row2['IdVenta']  ?>" readonly>
+                        <label for="IdVenta" class="form_label">Id Venta:</label>
+                        <span class="form_line"></span>
+                    </div>
+                    
+                    <div class="form_group">
+                        <select id="Usuario" class="form_input" name="Usuario">
                             <?php
                                 while($row=mysqli_fetch_array($query)){
                             ?>
@@ -38,13 +44,16 @@
                                 }
                             ?>
                         </select>
-                        <label for="Producto" class="form_label">Producto:</label>
+                        <label for="Usuario" class="form_label">Usuario:</label>
                         <span class="form_line"></span>
-                        
                     </div>
+
                     <div class="form_group">
-                        <input type="text" id="Cantidad" class="form_input" placeholder=" " value="<?php echo $row2[6]  ?>"name="Cantidad" >
-                        <label for="Cantidad" class="form_label">Cantidad:</label>
+                        <select id="Estado" class="form_input" name="Estado">
+                            <option>0</option>  
+                            <option>1</option>
+                        </select>
+                        <label for="Estado" class="form_label">Estado:</label>
                         <span class="form_line"></span>
                     </div>
                     <input type="submit" class="form_submit" value="Guardar">

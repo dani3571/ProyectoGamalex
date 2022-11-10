@@ -1,7 +1,11 @@
 <?php 
     include("../conexion.php");
     $con=conectar();
-    $sql="SELECT *  FROM venta inner join producto on venta.IdProducto = producto.IdProducto";
+    $sql="SELECT IdVenta,venta.IdUsuario,venta.IdCliente,cliente.NIT,venta.Estado,FechaVenta,Cantidad,
+    CONCAT(Usuario.Nombre,' ', Usuario.Apellido) as NombreCompleto  
+    FROM venta inner join Usuario on venta.IdUsuario = Usuario.IdUsuario
+    inner join cliente on venta.IdCliente = cliente.IdCliente";
+    
     $query=mysqli_query($con,$sql);
 ?>
 <!DOCTYPE html>
@@ -30,10 +34,12 @@
                 <table class="tabla">
                     <thead>
                         <tr>
-                            <th>IdVenta</th>
-                            <th>Producto</th>
-                            <th>Fecha Venta</th>
+                            <th>Numero venta</th>
+                            <th>Usuario</th>
+                            <th>NIT</th>
+                            <th>FechaVenta</th>
                             <th>Cantidad</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -46,10 +52,12 @@
                         ?>
                             <tr>
                                 <th><?php  echo $row['IdVenta']?></th>
-                                <th><?php  echo $row['Nombre']?></th>   
+                                <th><?php  echo $row['NombreCompleto']?></th>
+                                <th><?php  echo $row['NIT']?></th>
                                 <th><?php  echo $row['FechaVenta']?></th>
-                                <th><?php  echo $row[6]?></th>
+                                <th><?php  echo $row['Cantidad']?></th>  
                                 <th><a href="actualizarVenta.php?id=<?php echo $row['IdVenta'] ?>" class="link_editar">Editar</a></th>
+                                <th><a href="detalleVenta.php?id=<?php echo $row['IdVenta'] ?>" class="link_editar">Detalle Venta</a></th>
                                 <th><a href="eliminarVenta.php?id=<?php echo $row['IdVenta'] ?>" class="link_eliminar">Eliminar</a></th>                                        
                             </tr>
                         <?php 

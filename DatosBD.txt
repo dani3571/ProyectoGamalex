@@ -1,0 +1,7 @@
+use farmaciagamalex;
+INSERT INTO `laboratorio`(`Nombre`, `Direccion`, `Estado`) VALUES ('Drogueria INTI S.A.','Calle Lucas Jaimes 1959',1);
+INSERT INTO `producto`(`Nombre`, `Cantidad`, `PrecioUnidad`, `PrecioTotalProducto`, `Descripcion`, `Estado`, `IdLaboratorio`) VALUES ('Ibuprofeno',50,1.50,75,'Bajo receta medica',1,1);
+INSERT INTO `usuario`(`Nombre`, `Apellido`, `CI`, `Contraseña`, `Rol`, `Estado`) VALUES ('Geovana','Soruco','123456',12345,'Administrador',1);
+INSERT INTO `cliente`(`NIT`, `Apellido`, `Estado`) VALUES ('789456123','Herrera',1);
+INSERT INTO `venta`(`IdUsuario`, `IdCliente`, `Estado`, `FechaVenta`, `Cantidad`) VALUES (1,1,1,'2022-11-03 04:09:01',10);
+INSERT INTO `detalleventa`(`IdVenta`, `IdProducto`) VALUES (1,1)

@@ -1,0 +1,86 @@
+create DATABASE farmaciagamalex;
+use farmaciagamalex;
+create table Laboratorio(
+IdLaboratorio int not null primary key AUTO_INCREMENT,
+Nombre varchar(30),
+Direccion varchar(30),
+Estado bit
+);
+
+create table LaboratorioProductos(
+IdLaboratorioProductos int not null primary key AUTO_INCREMENT,
+IdLaboratorio int not null,
+IdProducto int not null
+);
+
+create table Producto(
+IdProducto int not null primary key AUTO_INCREMENT,
+Nombre varchar(30),
+Cantidad int(7),
+PrecioUnidad decimal(8,2),
+PrecioTotalProducto decimal(8,2),
+Descripcion varchar(100),
+Estado bit,
+Imagen longblob,
+IdLaboratorio int not null
+);
+
+create table DetalleProducto(
+IdDetalleProducto int not null primary key AUTO_INCREMENT,
+FechaCompra datetime,
+FechaVencimiento datetime,
+Estado bit,
+IdProducto int not null
+);
+
+create table Compra(
+IdCompra int not null primary key AUTO_INCREMENT,
+FechaCompra datetime,
+PrecioTotalCompra decimal(8,2),
+CantidadCompra int
+);
+
+create table DetalleCompra(
+IdDetalleCompra int not null primary key AUTO_INCREMENT,
+IdCompra int not null,
+IdProducto int not null
+);
+create table Venta(
+IdVenta int not null primary key AUTO_INCREMENT,
+IdUsuario int not null,
+IdCliente int not null,
+Estado bit,
+FechaVenta datetime,
+Cantidad int
+);
+create table DetalleVenta(
+IdDetalleVenta int not null primary key AUTO_INCREMENT,
+IdVenta int not null,
+IdProducto int not null
+);
+create table Cliente(
+IdCliente int not null primary key AUTO_INCREMENT,
+NIT varchar(40),
+Apellido varchar(30),
+Estado bit
+);
+
+create table Usuario(
+IdUsuario int not null primary key AUTO_INCREMENT,
+Nombre varchar(30),
+Apellido varchar(30),
+CI varchar(30),
+Contraseña varchar(100),
+Rol varchar(30),
+Estado bit
+);
+ALTER TABLE LaboratorioProductos ADD FOREIGN KEY(IdLaboratorio) REFERENCES Laboratorio(IdLaboratorio);
+ALTER TABLE LaboratorioProductos ADD FOREIGN KEY(IdProducto) REFERENCES Producto(IdProducto);
+ALTER TABLE DetalleCompra ADD FOREIGN KEY(IdCompra) REFERENCES Compra(IdCompra);
+ALTER TABLE DetalleCompra ADD FOREIGN KEY(IdProducto) REFERENCES Producto(IdProducto);
+ALTER TABLE Producto ADD FOREIGN KEY(IdLaboratorio) REFERENCES laboratorio(IdLaboratorio);
+ALTER TABLE Venta ADD FOREIGN KEY(IdUsuario) REFERENCES Usuario(IdUsuario);
+ALTER TABLE Venta ADD FOREIGN KEY(IdCliente) REFERENCES Cliente(IdCliente);
+ALTER TABLE DetalleVenta ADD FOREIGN KEY(IdVenta) REFERENCES Venta(IdVenta);
+ALTER TABLE DetalleVenta ADD FOREIGN KEY(IdProducto) REFERENCES Producto(IdProducto);
+ALTER TABLE DetalleProducto ADD FOREIGN KEY(IdProducto) REFERENCES Producto(IdProducto);
