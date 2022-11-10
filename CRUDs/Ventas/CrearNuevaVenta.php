@@ -283,7 +283,7 @@
                     &nbsp;
                     <h3 id="Total">0</h3>
                     <form style="display: inline;" id="evento_formulario">
-                        <input id="TerminarVenta" type="submit" class="form_submit" value="Terminar venta" onclick="alert()">
+                        <input id="TerminarVenta" type="submit" class="form_submit" value="Terminar venta">
                     </form>
                 </div>
             </div>

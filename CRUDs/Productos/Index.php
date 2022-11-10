@@ -34,6 +34,8 @@
                             <th>Laboratorio</th>
                             <th></th>
                             <th></th>
+                            
+
                         </tr>
                     </thead>
                     <tbody>
@@ -58,10 +60,10 @@
                 <th><?php echo $Descripcion; ?></th>
                 <th><?php echo $IdLaboratorio; ?></th>
                 
-                <td> 
+           
               
                 <th><a class="link_editar" href="actualizarProducto.php">Editar</a></th>
-                <th><a class="link_eliminar" href="eliminar.php">Eliminar</a></th>    </td>
+                <th><a class="link_eliminar" href="eliminar.php">Eliminar</a></th>
 		        </tr>
 				<?php
 				}	

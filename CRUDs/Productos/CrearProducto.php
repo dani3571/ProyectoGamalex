@@ -21,11 +21,6 @@
                 <h2 class="form_title">Ingrese datos del Producto</h2>
                 <div class="form_container">
                     <div class="form_group">
-                        <input type="text" id="IdProducto" class="form_input" placeholder=" " name="IdProducto" >
-                        <label for="IdProducto" class="form_label">IdProducto:</label>
-                        <span class="form_line"></span>
-                    </div>
-                    <div class="form_group">
                         <input type="text" id="Nombre" class="form_input" placeholder=" " name="Nombre" >
                         <label for="Nombre" class="form_label">Nombre:</label>
                         <span class="form_line"></span>
