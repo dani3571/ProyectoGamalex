@@ -29,7 +29,7 @@
             </div>
             <div class="formulario">
                 <div class="crear">
-                    <a class="link_crear" href="CrearVenta.php">CREAR</a>
+                    <a class="link_crear" href="CrearNuevaVenta.php">CREAR</a>
                 </div>
                 <table class="tabla">
                     <thead>

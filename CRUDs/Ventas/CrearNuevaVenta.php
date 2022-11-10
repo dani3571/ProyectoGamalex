@@ -21,7 +21,9 @@
         <link rel="stylesheet" href="../css/estilosCrudVentas.css">
         <link rel="stylesheet" href="../css/header.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
-        <script>
+        <script src="https://cdn.tailwindcss.com"></script>     
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+       <script>
             $(document).ready(
                 function(){
                     
@@ -100,8 +102,7 @@
                                     PrecioTotal.innerHTML = document.getElementById('PrecioTotal').value;
                                     Eliminar.classList.add('link_eliminar')
                                     Eliminar.innerHTML = "Eliminar";
-                                    document.getElementById('Total').innerHTML = (parseInt(document.getElementById('Total').innerHTML) + parseInt(document.getElementById('PrecioTotal').value)).toString();
-                                    
+                                    document.getElementById('Total').innerHTML = (parseFloat(document.getElementById('Total').innerHTML) + parseFloat(document.getElementById('PrecioTotal').value)).toString();
                                 }
                             }
                             else
@@ -130,7 +131,7 @@
                     ),
                     $("body").on('click',".link_eliminar",function(){
                         console.log($(this).parent().index());
-                        document.getElementById('Total').innerHTML = (parseInt(document.getElementById('Total').innerHTML) - document.getElementById('tablaContenido').children[$(this).parent().index()].children[4].innerHTML).toString();
+                        document.getElementById('Total').innerHTML = (parseFloat(document.getElementById('Total').innerHTML) - document.getElementById('tablaContenido').children[$(this).parent().index()].children[4].innerHTML).toString();
                         $(this).parent().remove();
                         contador--;
                     })
@@ -140,27 +141,11 @@
         </script>
     </head>
     <body>
-        <header id="cabecera">
-            <nav class="navegacion">
-                <ul>
-                    <li class="submenu" style="cursor: pointer;">
-                        <a target="top">Mision - Vision</a>
-                    </li>
-                    <li class="submenu" style="cursor: pointer;">
-                      <a target="top">Productos</a>
-                    </li>
-                    <li class="submenu" style="cursor: pointer;">
-                      <a target="top">Descargar app</a>
-                    </li>
-                    <li class="submenu" style="cursor: pointer;">
-                        <a target="top">Login</a>
-                    </li>
-                </ul>
-                <a id="home" href="" style="margin-left: 20px;">
-                    <ion-icon name="menu-outline"></ion-icon>
-                </a>
-              </nav>
-        </header>
+    <div class="header-container">
+            <?php
+                include("../../EstructuraCuerpo/header.php");
+            ?>
+        </div>
         <div class="form">
             <div class="datos_venta_container">
                 <h2 class="form_title">Ingrese datos de la Venta</h2>
@@ -260,12 +245,22 @@
                         </tbody>
                     </table>
                 </div>
+            <script>
+                function alert(){    
+                Swal.fire(
+              'Venta registrada!',
+              '',
+              'success'
+              )
+            }
+
+                </script>
                 <div class="Total">
                     <h3>Total compra:</h3>
                     &nbsp;
                     <h3 id="Total">0</h3>
                     <form style="display: inline;" id="evento_formulario">
-                        <input id="TerminarVenta" type="submit" class="form_submit" value="Terminar venta">
+                        <input id="TerminarVenta" type="submit" class="form_submit" value="Terminar venta" onclick="alert()">
                     </form>
                 </div>
             </div>
