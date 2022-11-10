@@ -47,13 +47,6 @@ $row2=mysqli_fetch_array($query2);
                     <a style="color:blue" href="index.php"><~ Regresar</a>
                 </div>
             </form>
-
-
-
-
-
-
-
         </div>
     </body>
 </html>

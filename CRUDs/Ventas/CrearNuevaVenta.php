@@ -129,6 +129,29 @@
                             }
                         }
                     ),
+                    $('#Cantidad').on('input',
+
+                    function(){
+                    
+                        if(document.getElementById('Cantidad').value.toString().trim()==null||document.getElementById('Cantidad').value==0)
+                    
+                        {
+                    
+                            document.getElementById('PrecioTotal').value = 0;
+                    
+                        }
+                    
+                        else
+                    
+                        {
+                    
+                            document.getElementById('PrecioTotal').value  = document.getElementById('PrecioIndividual').value * document.getElementById('Cantidad').value;
+                    
+                        }
+                    
+                    }
+                    
+                    ),
                     $("body").on('click',".link_eliminar",function(){
                         console.log($(this).parent().index());
                         document.getElementById('Total').innerHTML = (parseFloat(document.getElementById('Total').innerHTML) - document.getElementById('tablaContenido').children[$(this).parent().index()].children[4].innerHTML).toString();

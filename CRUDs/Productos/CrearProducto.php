@@ -41,7 +41,7 @@
                         <span class="form_line"></span>
                     </div>
                     <div class="form_group">
-                        <input type="text" id="PrecioTotal" class="form_input" placeholder=" " name="PrecioTotal" >
+                        <input type="text" id="PrecioTotal" class="form_input" placeholder=" " name="PrecioTotalProducto" >
                         <label for="PrecioTotal" class="form_label">Precio total:</label>
                         <span class="form_line"></span>
                     </div>
@@ -51,7 +51,7 @@
                         <span class="form_line"></span>
                     </div>
                     <div class="form_group">
-                        <input type="text" id="Laboratorio" class="form_input" placeholder=" " name="Laboratorio" >
+                        <input type="text" id="Laboratorio" class="form_input" placeholder=" " name="IdLaboratorio" >
                         <label for="Laboratorio" class="form_label">Laboratorio:</label>
                         <span class="form_line"></span>
                     </div>
