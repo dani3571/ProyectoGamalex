@@ -50,6 +50,9 @@
                       <a href="/ProyectoGamalex/CRUDs/Laboratorios/Index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Laboratorios</a>
     
                       <a href="/ProyectoGamalex/CRUDs/Usuarios/Index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Usuarios</a>
+                    
+                      <a href="/ProyectoGamalex/CRUDs/Clientes/Clientes.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Clientes</a>
+                 
                     </div>
                   </div>
                 </div>
