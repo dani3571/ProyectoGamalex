@@ -17,7 +17,7 @@
     <head>
         <title>Laboratorios</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-wievento_formulariodth, initial-scale=1">
         <link rel="stylesheet" href="../css/estilosCrudVentas.css">
         <link rel="stylesheet" href="../css/header.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
@@ -269,14 +269,7 @@
                     </table>
                 </div>
             <script>
-                function alert(){    
-                Swal.fire(
-              'Venta registrada!',
-              '',
-              'success'
-              )
-            }
-
+               
                 </script>
                 <div class="Total">
                     <h3>Total compra:</h3>

@@ -8,8 +8,10 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <script src = "jquery/jquery-3.6.0.min.js"></script>
     <link href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-      <!--Aqui debe estar el header  <link rel="stylesheet" href="../css/header.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/swal2/sweetalert2.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--Aqui debe estar el header  <link rel="stylesheet" href="../css/header.css"> -->
       
          <div class="header-container">
             <?php
@@ -18,8 +20,8 @@
         </div>
     <body>
     
-        <div class="form">
-            <form action="insertarLaboratorio.php" id="frmajax" method="POST">
+        <div class="form" >
+            <form id="frmajax" method="POST">
                 <h2 class="form_title">Ingrese datos del laboratorio</h2>
                 <div class="form_container">
                     <div class="form_group">
@@ -32,17 +34,55 @@
                         <label for="Direccion" class="form_label" id="Direccion">Direccion:</label>
                         <span class="form_line"></span>
                     </div> 
-                       <button id="btnGuardar" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" onclick="location.href='CRUDs\Laboratorios\index.php'">
-                         Guardar
-                        </button>
+                        <input id="btnGuardar" type="submit" class="form_submit" value="Guardar">
 
                     
                     </div>
             </form>
         </div>
+    <script>
+        
+        $(document).ready(function(){
+            $('#btnGuardar').click(function(){
+                var datos =$('#frmajax').serialize();
+                $.ajax({
+                    type:"POST",
+                    url:"insertarLaboratorio.php",
+                    data: datos,
+                    success:function(r){
+                        if(r==1)
+                        {
+                           alertaN();
+                        }else{
+                           alertaa();     
+                        }
+                    }
+                });
+    
+                return false;
+            });
+        });
 
-
-        <script type="text/javascript" src="../Laboratorios/añadirLaboratorio.js"></script>
+        function alertaa(){    
+            swal(
+             'Laboratorio registrado!',
+             'El laboratorio se registro con exito',
+             'success'
+             );
+             frmajax.reset();
+       
+             
+        }
+        function alertaN(){
+            swal(
+             'El laboratorio no se registro',
+             'Oops no se logro registrar el laboratorio',
+             'error'
+             );
+           
+        }
+        
+    </script>
         <?php
        include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/footer.php");
        ?>

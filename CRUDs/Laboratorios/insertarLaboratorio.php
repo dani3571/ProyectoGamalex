@@ -8,9 +8,4 @@ $sql="INSERT INTO laboratorio(Nombre, Direccion, Estado)
  VALUES('$Nombre','$Direccion',1)";
 $query= mysqli_query($con,$sql);
 
-if($query){
-    Header("Location: index.php");
-
-}else {   
-}
 ?>
