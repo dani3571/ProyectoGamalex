@@ -35,19 +35,6 @@
             $(document).on('submit','#evento_formulario',function(event){
                 event.preventDefault();
                 let tblDatos = document.getElementById('tablaContenido').children;
-                /*for (var i = 0; i < tblDatos.length; i++) {
-                    for (var j = 0; j < tblDatos[i].children.length; j++)
-                    {
-                        console.log(tblDatos[i].children[j]);
-                        var IdVenta = 1;
-                        var IdUsuario = 1;
-                        var IdCliente = 1;
-                        var Estado = 1;
-                        var FechaVenta = document.getElementById('Fecha').value;
-                        var IdProducto = tblDatos[i].children[j];
-                    }
-                    //console.log(tblDatos[i].children);
-                }*/
                 var fechaVenta = document.getElementById('Fecha').value;
                 var cantidad = parseInt(document.getElementById('Total').innerHTML);
                 $.ajax({
@@ -60,18 +47,19 @@
                     var idProducto = tblDatos[i].children[0].innerHTML;
                     var Producto = tblDatos[i].children[1].innerHTML;
                     var Precio = tblDatos[i].children[2].innerHTML;
-                    var Cantidad = tblDatos[i].children[3].innerHTML;
+                    var cantidad = tblDatos[i].children[3].innerHTML;
                     var Subtotal = tblDatos[i].children[4].innerHTML;
                     $.ajax({
                         url: "insertarDetalleVenta.php",
                         method: "post",
-                        data: {IdVenta: idVenta, IdProducto : idProducto}
+                        data: {IdVenta: idVenta, IdProducto : idProducto, Cantidad: cantidad}
                     })
                 }
-                /*
-                miArray.forEach( function(valor, indice, array) {
-                console.log("En el índice " + indice + " hay este valor: " + valor);
-                });*/
+                document.getElementById('Total').innerHTML = 0;
+                document.getElementById('Productos').selectedIndex = 0;
+                document.getElementById('CantidadDisponible').selectedIndex = 0;
+                document.getElementById('PrecioIndividual').selectedIndex = 0;
+                document.getElementById('Cantidad').selectedIndex = 0;
             });
             $(document).ready(
                 function funcionInicial(){
