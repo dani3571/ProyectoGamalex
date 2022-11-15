@@ -9,6 +9,8 @@ $PrecioUnidad=$_POST['PrecioUnidad'];
 $PrecioTotalProducto=$_POST['PrecioTotalProducto'];
 $Descripcion=$_POST['Descripcion'];
 $IdLaboratorio=$_POST['IdLaboratorio'];
+//$Imagen=$_FILES['Imagen']['tmp_name'];
+//$imgContent=addslashes(file_get_contents($Imagen));
 
 $sql="INSERT INTO producto (Nombre, Cantidad, PrecioUnidad, PrecioTotalProducto, Descripcion, Estado, IdLaboratorio)
 VALUES('$Nombre','$Cantidad','$PrecioUnidad','$PrecioTotalProducto','$Descripcion', 1, $IdLaboratorio)";
