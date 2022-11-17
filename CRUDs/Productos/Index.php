@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Laboratorios</title>
+        <title>Producto</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/estilosCRUDS.css">
@@ -32,6 +32,7 @@
                             <th>Precio total</th>
                             <th>Descripcion</th>
                             <th>Laboratorio</th>
+                            <th>Imagen</th>
                             <th></th>
                             <th></th>
                             
@@ -59,6 +60,7 @@
                 <th><?php echo $PrecioTotalProducto; ?></th>
                 <th><?php echo $Descripcion; ?></th>
                 <th><?php echo $IdLaboratorio; ?></th>
+                
                 
            
               
