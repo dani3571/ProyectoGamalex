@@ -23,26 +23,26 @@
         </div>
     
         <div class="form">
-            <form action="./insertarProducto.php" method="POST" enctype="multipart/form-data>
+            <form action="./insertarProducto.php" method="POST" enctype="multipart/form-data">
                 <h2 class="form_title">Ingrese datos del Producto</h2>
                 <div class="form_container">
                     <div class="form_group">
-                        <input type="text" id="Nombre" class="form_input" placeholder=" " name="Nombre" >
+                        <input type="text" id="Nombre" class="form_input" placeholder=" " name="Nombre" required  >
                         <label for="Nombre" class="form_label">Nombre:</label>
                         <span class="form_line"></span>
                     </div>
                     <div class="form_group">
-                        <input type="text" id="Cantidad" class="form_input" placeholder=" " name="Cantidad"  oninput="calculate()" >
+                        <input type="number" id="Cantidad" class="form_input" placeholder=" " name="Cantidad"  oninput="calculate()" min="1"   required>
                         <label for="Cantidad" class="form_label">Cantidad:</label>
                         <span class="form_line"></span>
                     </div>
                     <div class="form_group">
-                        <input  type="text" id="PrecioUnidad" class="form_input" placeholder=" " name="PrecioUnidad" oninput="calculate()" >
+                        <input  type="number" id="PrecioUnidad" class="form_input" placeholder=" " name="PrecioUnidad" oninput="calculate()" min="1"  required >
                         <label for="PrecioUnidad" class="form_label">Precio Unidad:</label>
                         <span class="form_line"></span>
                     </div>
                     <div class="form_group">
-                        <input type="text" id="PrecioTotalProducto" class="form_input" placeholder=" " name="PrecioTotalProducto" >
+                        <input type="text" id="PrecioTotalProducto" class="form_input" placeholder=" " name="PrecioTotalProducto" readonly required >
                         <label for="PrecioTotal" class="form_label">Precio total:</label>
                         <span class="form_line"></span>
                     </div>
@@ -96,5 +96,15 @@ result.value = myResult;
 
 }
 } catch (error) { throw error; }
+/*function validarDatos(){
+    var Nombre=document.getElementById('Nombre').value; 
+    var Cantidad=document.getElementById('Cantidad').value; 
+    var PrecioUnidad=document.getElementById('PrecioUnidad').value; 
+    var PrecioTotal=document.getElementById('PrecioTotal').value;
+    if(Nombre==null|| Cantidad==null||PrecioUnidad==null||,PrecioTotal==null){
+        alert("Tienes que llenar todos los datos ")
+    } 
+    
+}*/
 
 </script>
