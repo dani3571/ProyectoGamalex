@@ -52,7 +52,12 @@
 				while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
 				extract($row);
 				?>
-				<tr>
+		
+        <?php
+                 $img=base64_encode($row['Imagen']);
+           //      $imagen = base64_encode($datos ['Imagen']);
+               ?>
+               <tr>
 		        <th><?php echo $IdProducto; ?></th>
                 <th><?php echo $Nombre; ?></th>
                 <th><?php echo $Cantidad; ?></th>
@@ -60,10 +65,12 @@
                 <th><?php echo $PrecioTotalProducto; ?></th>
                 <th><?php echo $Descripcion; ?></th>
                 <th><?php echo $IdLaboratorio; ?></th>
-                
-                
-           
-              
+                <th><img width= "200px" height="200px" class="img-responsive" src="data:$row[Imagen]/jpg;charset=utf8;base64,<?php echo $img ?>"/></th>
+        
+
+             
+         
+               
                 <th><a class="link_editar" href="actualizarProducto.php">Editar</a></th>
                 <th><a class="link_eliminar" href="eliminar.php">Eliminar</a></th>
 		        </tr>
