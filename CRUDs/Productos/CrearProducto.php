@@ -62,20 +62,26 @@
                                     <?php
                                         while($productos = mysqli_fetch_array($query4)){
                                     ?>
-                                        <option><?php  echo $productos['IdLaboratorio']?> </option>   
+                                        <option><?php  echo $productos['Nombre']?> </option>   
+                                        <option><?php  echo $productos['IdLaboratorio']?> </option> 
                                     <?php 
                                         }
                                     ?> 
                                 </select>
                                 <label for="Productos" class="form_label">IdLaboratorio:</label>
                             </div>
+                            <div class="form_group">
+                        <input type="date" id="Vencimiento" class="form_input" placeholder=" " name="Vencimiento" >
+                        <label for="Vencimiento" class="form_label">fechaVencimiento:</label>
+                        <span class="form_line"></span>
+                    </div>
                             <div  class="from"  >
             <label for="Productos" class="form_label">Seleccione la imagen:</label>
        
             <input type="file" name="Imagen"/>
         </div>
                             
-                        <input type="submit" class="form_submit" value="Guardar">
+                        <input type="submit" class="form_submit" onclick="return foo();"  value="Guardar"  >
                 </div>
                
             </form>
@@ -107,4 +113,10 @@ result.value = myResult;
     
 }*/
 
+</script>
+<script>
+   function foo() {
+   alert("Datos Correctos");
+   return true;
+}
 </script>
