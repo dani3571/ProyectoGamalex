@@ -72,7 +72,9 @@
          
                
                 <th><a class="link_editar" href="actualizarProducto.php?id=<?php echo $row['IdProducto'] ?>">Editar</a></th>
-                <th><a class="link_eliminar" href="eliminar.php">Eliminar</a></th>
+                <th><a class="link_eliminar" href="eliminarProducto.php?id=<?php echo $row['IdProducto'] ?>">Eliminar</a></th>
+
+                
 		        </tr>
 				<?php
 				}	
