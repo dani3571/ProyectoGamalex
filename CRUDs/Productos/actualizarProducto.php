@@ -79,7 +79,9 @@
        
     </body>
 </html>
-<script>try {function calculate() {
+<script>
+/*
+try {function calculate() {
 var myBox1 = document.getElementById('Cantidad').value; 
 var myBox2 = document.getElementById('PrecioUnidad').value;
 var result = document.getElementById('PrecioTotalProducto'); 
@@ -88,6 +90,8 @@ result.value = myResult;
 
 
 }
-} catch (error) { throw error; } </script>
+} catch (error) { throw error; } 
+*/
+</script>
 
 
