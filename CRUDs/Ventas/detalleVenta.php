@@ -4,8 +4,7 @@ include("../conexion.php");
 $con=conectar();
 $cod_venta=$_GET['id'];
 
-$sql="SELECT detalleventa.IdVenta, producto.IdProducto, producto.Nombre 
-as Producto FROM detalleventa inner join producto on detalleventa.IdProducto = producto.IdProducto WHERE detalleventa.IdVenta='$cod_venta'";
+$sql="SELECT detalleventa.IdVenta, producto.IdProducto, producto.Nombre as Producto FROM detalleventa inner join producto on detalleventa.IdProducto = producto.IdProducto WHERE detalleventa.IdVenta='$cod_venta'";
 
 $query=mysqli_query($con,$sql);
 ?>

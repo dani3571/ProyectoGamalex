@@ -10,7 +10,9 @@
     $sql3 = "SELECT * FROM producto";
     $query3 = mysqli_query($con,$sql3); 
     $sql4 = "SELECT * FROM producto";
-    $query4 = mysqli_query($con,$sql4); 
+    $query4 = mysqli_query($con,$sql4);
+    
+                 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +35,17 @@
                 }
             );
             $(document).on('submit','#evento_formulario',function(event){
-                
+                event.preventDefault();
+                let nit = document.getElementById('NIT').value.toString();
+                let apellido = document.getElementById('Apellido').value;
+                if(nit!=0&&apellido!="")
+                {
+                    $.ajax({
+                    url: "insertarCliente.php",
+                    method: "post",
+                    data: {NIT : nit, Apellido: apellido}
+                    })
+                }
                 let tblDatos = document.getElementById('tablaContenido').children;
                 var fechaVenta = document.getElementById('Fecha').value;
                 var cantidad = parseInt(document.getElementById('Total').innerHTML);
@@ -65,15 +77,19 @@
                 document.getElementById('CantidadDisponible').selectedIndex = 0;
                 document.getElementById('PrecioIndividual').selectedIndex = 0;
                 document.getElementById('Cantidad').selectedIndex = 0;
+                document.getElementById('Cantidad').selectedIndex = 0;
+                document.getElementById('NIT').value = 0;
+                document.getElementById('Apellido').value = "";
                 //document.getElementById('cantidadSumada').value = 0;
-                jQuery(document).load(window.location.href);
-                window.location.reload();
+                //jQuery(document).load(window.location.href);
+                //window.location.reload();
             });
             $(document).ready(
                 function funcionInicial(){
                     contador = 0;
                     $('#aumentarFila').click(
                         function(){
+                            
                             if(document.getElementById('Productos').selectedIndex!=0)
                             {
                                 if(document.getElementById('Cantidad').value.toString().trim()==null||document.getElementById('Cantidad').value.toString().trim()==0)
@@ -82,32 +98,25 @@
                                 }
                                 else
                                 {
-                                    if(((parseInt(document.getElementById('cantidadSumada').value)) + (parseInt(document.getElementById('Cantidad').value))) <= document.getElementById('CantidadDisponible').value)
-                                    {
-                                        let tblDatos = document.getElementById('tablaContenido').insertRow(contador);
-                                        contador++;
-                                        console.log(contador);
-                                        console.log(document.getElementById('cantidadSumada').value);
-                                        let IdProducto = tblDatos.insertCell(0);
-                                        let Productos = tblDatos.insertCell(1);
-                                        let Precio = tblDatos.insertCell(2);
-                                        let Cantidad = tblDatos.insertCell(3);
-                                        let PrecioTotal = tblDatos.insertCell(4);
-                                        let Eliminar = tblDatos.insertCell(5);
-                                        IdProducto.innerHTML = document.getElementById('IdProducto').value;
-                                        Productos.innerHTML = document.getElementById('Productos').value;
-                                        Precio.innerHTML = document.getElementById('PrecioIndividual').value;
-                                        Cantidad.innerHTML = document.getElementById('Cantidad').value;
-                                        PrecioTotal.innerHTML = document.getElementById('PrecioTotal').value;
-                                        Eliminar.classList.add('link_eliminar')
-                                        Eliminar.innerHTML = "Eliminar";
-                                        document.getElementById('Total').innerHTML = (parseFloat(document.getElementById('Total').innerHTML) + parseFloat(document.getElementById('PrecioTotal').value)).toString();
-                                        //document.getElementById('cantidadSumada').value = (parseInt(document.getElementById('cantidadSumada').value)) + (parseInt(document.getElementById('Cantidad').value));
-                                    }
-                                    else
-                                    {
-                                        alert("La cantidad para agregar no puede ser mayor a la cantidad disponible");
-                                    }
+                                    let tblDatos = document.getElementById('tablaContenido').insertRow(contador);
+                                    contador++;
+                                    console.log(contador);
+                                    console.log(document.getElementById('cantidadSumada').value);
+                                    let IdProducto = tblDatos.insertCell(0);
+                                    let Productos = tblDatos.insertCell(1);
+                                    let Precio = tblDatos.insertCell(2);
+                                    let Cantidad = tblDatos.insertCell(3);
+                                    let PrecioTotal = tblDatos.insertCell(4);
+                                    let Eliminar = tblDatos.insertCell(5);
+                                    IdProducto.innerHTML = document.getElementById('IdProducto').value;
+                                    Productos.innerHTML = document.getElementById('Productos').value;
+                                    Precio.innerHTML = document.getElementById('PrecioIndividual').value;
+                                    Cantidad.innerHTML = document.getElementById('Cantidad').value;
+                                    PrecioTotal.innerHTML = document.getElementById('PrecioTotal').value;
+                                    Eliminar.classList.add('link_eliminar')
+                                    Eliminar.innerHTML = "Eliminar";
+                                    document.getElementById('Total').innerHTML = (parseFloat(document.getElementById('Total').innerHTML) + parseFloat(document.getElementById('PrecioTotal').value)).toString();
+                                    //document.getElementById('cantidadSumada').value = (parseInt(document.getElementById('cantidadSumada').value)) + (parseInt(document.getElementById('Cantidad').value));
                                 }
                             }
                             else
@@ -132,6 +141,12 @@
                             {
                                 document.getElementById('PrecioTotal').value  = document.getElementById('PrecioIndividual').value * document.getElementById('Cantidad').value;
                             }
+                        }
+                    ),
+                    $('#NIT').on('input',
+                        function(){
+                            //document.getElementById('Apellido').value = document.getElementById('NIT').value;
+                            conseguirApellido()
                         }
                     ),
                     $('#Cantidad').on('input',
@@ -159,6 +174,40 @@
                 }
             );
         </script>
+        <!--<script>
+            function verCantidad(){
+                var cantidad = document.getElementById('IdProducto').value;
+                $.ajax({
+                    url: "conseguirCantidad.php",
+                    method: "POST",
+                    data: {Cantidad: cantidad},
+                    success: function(res){
+                        return res;
+                        //document.getElementById("cantidadSumada").value = parseInt(res);
+                    }
+                })
+                /*.success(
+                    function(res){
+                    document.getElementById("cantidadSumada").value = parseInt(res);
+                })*/
+            }
+        </script>-->
+        <script>
+            function conseguirApellido(){
+                var nit = document.getElementById('NIT').value;
+                $.ajax({
+                    url: "conseguirApellido.php",
+                    method: "POST",
+                    data: {NIT: nit},
+                    success: function(res){
+                        if(res!=null)
+                        {
+                            document.getElementById('Apellido').value = res;
+                        }
+                    }
+                })
+            }
+        </script>
     </head>
     <body>
     <div class="header-container">
@@ -172,9 +221,15 @@
                 <div class="main_forms_container">
                     <div class="columns_container">
                         <div class="form_container">
+                            
                             <div class="form_group">
                                 <input type="text" id="Fecha" class="form_input" placeholder=" " name="Fecha" readonly>
                                 <label for="Fecha" class="form_label">Fecha:</label>
+                            </div>
+                            <div class="form_group">
+                                <input type="number" id="NIT" class="form_input" placeholder=" " value="0" min="0" name="NIT">
+                                <label for="NIT" class="form_label">NIT:</label>
+                                <span class="form_line"></span>
                             </div>
                             <div class="form_group">
                                 <select id="Productos" class="form_input" name="Productos">
@@ -212,6 +267,11 @@
                             <div class="form_group">
                                 <input type="text" id="IdProducto" class="form_input" placeholder=" " value="1" name="IdProducto" readonly>
                                 <label for="IdProducto" class="form_label">Id Producto:</label>
+                                <span class="form_line"></span>
+                            </div>
+                            <div class="form_group">
+                                <input type="text" id="Apellido" class="form_input" placeholder=" " name="Apellido">
+                                <label for="Apellido" class="form_label">Apellido:</label>
                                 <span class="form_line"></span>
                             </div>
                             <div class="form_group">
