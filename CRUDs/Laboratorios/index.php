@@ -59,7 +59,6 @@
 		    },
 			allowOutsideClick: false			  
 		});	
-		
 	}
 	
 	function readLaboratory(){
