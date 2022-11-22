@@ -26,14 +26,14 @@
        <script>
             $(document).ready(
                 function(){
-                    
+                    let contador = 0;
                     const tiempoTranscurrido = Date.now();
                     const hoy = new Date(tiempoTranscurrido);
                     document.getElementById('Fecha').value = hoy.toLocaleDateString().replace("/","-").replace("/","-").split('-').reverse().join('-');
                 }
             );
             $(document).on('submit','#evento_formulario',function(event){
-                event.preventDefault();
+                
                 let tblDatos = document.getElementById('tablaContenido').children;
                 var fechaVenta = document.getElementById('Fecha').value;
                 var cantidad = parseInt(document.getElementById('Total').innerHTML);
@@ -49,21 +49,29 @@
                     var Precio = tblDatos[i].children[2].innerHTML;
                     var cantidad = tblDatos[i].children[3].innerHTML;
                     var Subtotal = tblDatos[i].children[4].innerHTML;
+                    contador--;
                     $.ajax({
                         url: "insertarDetalleVenta.php",
                         method: "post",
                         data: {IdVenta: idVenta, IdProducto : idProducto, Cantidad: cantidad}
                     })
                 }
+                let longitud = tblDatos.length;
+                for (var i = 0; i < longitud; i++) {
+                    console.log(tblDatos[0].remove());
+                }
                 document.getElementById('Total').innerHTML = 0;
                 document.getElementById('Productos').selectedIndex = 0;
                 document.getElementById('CantidadDisponible').selectedIndex = 0;
                 document.getElementById('PrecioIndividual').selectedIndex = 0;
                 document.getElementById('Cantidad').selectedIndex = 0;
+                //document.getElementById('cantidadSumada').value = 0;
+                jQuery(document).load(window.location.href);
+                window.location.reload();
             });
             $(document).ready(
                 function funcionInicial(){
-                    let contador = 0;
+                    contador = 0;
                     $('#aumentarFila').click(
                         function(){
                             if(document.getElementById('Productos').selectedIndex!=0)
@@ -74,23 +82,32 @@
                                 }
                                 else
                                 {
-                                    let tblDatos = document.getElementById('tablaContenido').insertRow(contador);
-                                    contador++;
-                                    console.log(contador);
-                                    let IdProducto = tblDatos.insertCell(0);
-                                    let Productos = tblDatos.insertCell(1);
-                                    let Precio = tblDatos.insertCell(2);
-                                    let Cantidad = tblDatos.insertCell(3);
-                                    let PrecioTotal = tblDatos.insertCell(4);
-                                    let Eliminar = tblDatos.insertCell(5);
-                                    IdProducto.innerHTML = document.getElementById('IdProducto').value;
-                                    Productos.innerHTML = document.getElementById('Productos').value;
-                                    Precio.innerHTML = document.getElementById('PrecioIndividual').value;
-                                    Cantidad.innerHTML = document.getElementById('Cantidad').value;
-                                    PrecioTotal.innerHTML = document.getElementById('PrecioTotal').value;
-                                    Eliminar.classList.add('link_eliminar')
-                                    Eliminar.innerHTML = "Eliminar";
-                                    document.getElementById('Total').innerHTML = (parseFloat(document.getElementById('Total').innerHTML) + parseFloat(document.getElementById('PrecioTotal').value)).toString();
+                                    if(((parseInt(document.getElementById('cantidadSumada').value)) + (parseInt(document.getElementById('Cantidad').value))) <= document.getElementById('CantidadDisponible').value)
+                                    {
+                                        let tblDatos = document.getElementById('tablaContenido').insertRow(contador);
+                                        contador++;
+                                        console.log(contador);
+                                        console.log(document.getElementById('cantidadSumada').value);
+                                        let IdProducto = tblDatos.insertCell(0);
+                                        let Productos = tblDatos.insertCell(1);
+                                        let Precio = tblDatos.insertCell(2);
+                                        let Cantidad = tblDatos.insertCell(3);
+                                        let PrecioTotal = tblDatos.insertCell(4);
+                                        let Eliminar = tblDatos.insertCell(5);
+                                        IdProducto.innerHTML = document.getElementById('IdProducto').value;
+                                        Productos.innerHTML = document.getElementById('Productos').value;
+                                        Precio.innerHTML = document.getElementById('PrecioIndividual').value;
+                                        Cantidad.innerHTML = document.getElementById('Cantidad').value;
+                                        PrecioTotal.innerHTML = document.getElementById('PrecioTotal').value;
+                                        Eliminar.classList.add('link_eliminar')
+                                        Eliminar.innerHTML = "Eliminar";
+                                        document.getElementById('Total').innerHTML = (parseFloat(document.getElementById('Total').innerHTML) + parseFloat(document.getElementById('PrecioTotal').value)).toString();
+                                        //document.getElementById('cantidadSumada').value = (parseInt(document.getElementById('cantidadSumada').value)) + (parseInt(document.getElementById('Cantidad').value));
+                                    }
+                                    else
+                                    {
+                                        alert("La cantidad para agregar no puede ser mayor a la cantidad disponible");
+                                    }
                                 }
                             }
                             else
@@ -122,27 +139,19 @@
                     function(){
                     
                         if(document.getElementById('Cantidad').value.toString().trim()==null||document.getElementById('Cantidad').value==0)
-                    
                         {
-                    
                             document.getElementById('PrecioTotal').value = 0;
-                    
                         }
-                    
                         else
-                    
                         {
-                    
                             document.getElementById('PrecioTotal').value  = document.getElementById('PrecioIndividual').value * document.getElementById('Cantidad').value;
-                    
                         }
-                    
                     }
-                    
                     ),
                     $("body").on('click',".link_eliminar",function(){
                         console.log($(this).parent().index());
                         document.getElementById('Total').innerHTML = (parseFloat(document.getElementById('Total').innerHTML) - document.getElementById('tablaContenido').children[$(this).parent().index()].children[4].innerHTML).toString();
+                        //document.getElementById('cantidadSumada').value = (parseInt(document.getElementById('cantidadSumada').value)) - (parseInt(document.getElementById('tablaContenido').children[$(this).parent().index()].children[3].innerHTML).toString());
                         $(this).parent().remove();
                         contador--;
                     })
@@ -234,6 +243,7 @@
                                 <span class="form_line"></span>
                             </div>
                         </div>
+                        <input id="cantidadSumada" type="hidden" class="form_submit" value=0>
                         <input id="aumentarFila" type="submit" class="form_submit" value="Agregar">
                     </div>
                 </div>
