@@ -5,7 +5,6 @@
     CONCAT(Usuario.Nombre,' ', Usuario.Apellido) as NombreCompleto  
     FROM venta inner join Usuario on venta.IdUsuario = Usuario.IdUsuario
     inner join cliente on venta.IdCliente = cliente.IdCliente";
-    
     $query=mysqli_query($con,$sql);
 ?>
 <!DOCTYPE html>
