@@ -30,16 +30,18 @@ $row2=mysqli_fetch_array($query2);
         <form action="./editar.php" method="POST">
                 <h2 class="form_title">Ingrese datos del Laboratorio</h2>
                 <div class="form_container">
-                    <input type="hidden" name="IdLaboratorio" value="<?php echo $row2['IdLaboratorio']  ?>">
+                    <input  type="hidden" name="IdLaboratorio" value="<?php echo $row2['IdLaboratorio']  ?>">
                     <div class="form_group">
-                        <input type="text" id="Nombre" name="Nombre" class="form_input" placeholder=" " value="<?php echo $row2['Nombre']  ?>" >
+                        <input pattern="[A-Za-z- -\.]+"  minlength="4" maxlength="30" required 
+                        title="Solo letras. Tamaño mínimo: 4" type="text" id="Nombre" name="Nombre" class="form_input" placeholder=" " value="<?php echo $row2['Nombre']  ?>" >
                         <label for="Nombre" class="form_label">Nombre:</label>
                         <span class="form_line"></span>
                     
                     </div>
 
                     <div class="form_group">
-                        <input type="text" id="Direccion" name="Direccion" class="form_input" placeholder=" " value="<?php echo $row2['Direccion']  ?>">
+                        <input pattern="[A-Za-z0-9- -,]+"  minlength="6" maxlength="40" required 
+                        title="Solo letras y numeros. Tamaño mínimo: 6" type="text" id="Direccion" name="Direccion" class="form_input" placeholder=" " value="<?php echo $row2['Direccion']  ?>">
                         <label for="Direccion" class="form_label">Direccion:</label>
                         <span class="form_line"></span>
                     </div>

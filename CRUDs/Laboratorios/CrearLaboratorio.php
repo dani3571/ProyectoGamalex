@@ -25,52 +25,60 @@
                 <h2 class="form_title">Ingrese datos del laboratorio</h2>
                 <div class="form_container">
                     <div class="form_group">
-                        <input type="text" id="Nombre" class="form_input" placeholder=" " name="Nombre" >
+                        <input pattern="[A-Za-z- ]+"  minlength="4" maxlength="30" required 
+                        title="Solo letras. Tamaño mínimo: 4" type="text" id="Nombre" class="form_input" placeholder=" " name="Nombre" >
                         <label for="Nombre" class="form_label" id="Nombre">Nombre:</label>
                         <span class="form_line"></span>
                     </div>
                     <div class="form_group">
-                        <input type="text" id="Direccion" class="form_input" placeholder=" " name="Direccion" >
+                        <input pattern="[A-Za-z0-9- -.-,]+"  minlength="6" maxlength="40" required 
+                        title="Solo letras y numeros. Tamaño mínimo: 6 "type="text" id="Direccion" class="form_input" placeholder=" " name="Direccion" >
                         <label for="Direccion" class="form_label" id="Direccion">Direccion:</label>
                         <span class="form_line"></span>
                     </div> 
-                        <input id="btnGuardar" type="submit" class="form_submit" value="Guardar">
+                        <input id="btnGuardar" type="submit" class="form_submit" value="Guardar" onclick= 'validar()'>
 
                     
                     </div>
             </form>
         </div>
     <script>
-        
-        $(document).ready(function(){
-            $('#btnGuardar').click(function(){
-                var datos =$('#frmajax').serialize();
-                $.ajax({
-                    type:"POST",
-                    url:"insertarLaboratorio.php",
-                    data: datos,
-                    success:function(r){
-                        if(r==1)
-                        {
-                           alertaN();
-                        }else{
-                           alertaa();     
-                        }
-                    }
-                });
-    
-                return false;
-            });
+     
+        $(document).ready(function(){      
+                $('#btnGuardar').click(function(){
+                if(document.getElementById("Nombre").value.length > 3  &&
+                document.getElementById("Direccion").value.length >= 6  ){
+                    var datos =$('#frmajax').serialize();
+                   
+                    $.ajax({
+                     
+                        type:"POST",
+                         url:"insertarLaboratorio.php",
+                         data: datos,
+                         success:function(r){
+                             if(r==1)
+                             {
+                                alertaN();
+                             }else{
+                                alertaa();
+                                  
+                             }
+                         }
+                        
+                     });
+                    
+                     return false;
+                 }
+          });     
         });
-
+    
         function alertaa(){    
-            swal(
+                swal(
              'Laboratorio registrado!',
              'El laboratorio se registro con exito',
              'success'
              );
              frmajax.reset();
-       
              
         }
         function alertaN(){
@@ -81,6 +89,20 @@
              );
            
         }
+    
+    </script>
+    <script>
+        //Validacion 
+        /*
+        fun validar(){
+            if(document.getElementById("Nombre").value.length > 3){
+               alert("a");
+	     	return false;
+	    	}else{
+			alert("El nombre del laboratorio debe ser mayor a 3");
+			return false
+		}
+        */
         
     </script>
         <?php
