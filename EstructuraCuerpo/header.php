@@ -44,6 +44,7 @@
                       <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Descargar App</a>
  
                       <a href="/ProyectoGamalex/CRUDs/Ventas/Index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ventas</a>
+                      <a href="/ProyectoGamalex/CRUDs/Compras/Index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Compras</a>
           
                       <a href="/ProyectoGamalex/CRUDs/Productos/Index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Productos</a>
           
