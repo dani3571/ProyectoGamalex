@@ -1,7 +1,7 @@
 <?php 
     include("../conexion.php");
     $con=conectar();
-    $sql="SELECT IdCompra,FechaCompra,PrecioTotalCompra,CantidadCompra FROM compra";
+    $sql="SELECT IdCompra,FechaCompra,PrecioTotalCompra,Estado,CantidadCompra FROM compra";
     
     $query=mysqli_query($con,$sql);
 ?>
