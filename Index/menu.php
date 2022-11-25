@@ -99,8 +99,8 @@
                 <figure>
                   <img src="../Imagenes/MicrosoftTeams-image (55).png" class="w-96 h-64">
                   <figcaption>
-                    <h2>Parasetamol</h2>
-                    <p>Este medicamento es bueno pararagahahahahah.</p>
+                    <h2></h2>
+                    <p></p>
                   </figcaption>
                 </figure>
               </div>
@@ -108,8 +108,8 @@
                 <figure>
                   <img src="../Imagenes/MicrosoftTeams-image (58).png" class="w-96 h-64">
                   <figcaption>
-                    <h2>Minoxidil</h2>
-                    <p>Este medicamento es bueno para reforzar las defenzas.</p>
+                    <h2></h2>
+                    <p></p>
                   </figcaption>
                 </figure>
               </div>
@@ -117,8 +117,8 @@
                 <figure>
                   <img src="../Imagenes/MicrosoftTeams-image (59).png" class="w-96 h-64">
                   <figcaption>
-                    <h2>Vispiranguitarimicuaro</h2>
-                    <p>Aqui un poco de tesco para esta receta.</p>
+                    <h2></h2>
+                    <p></p>
                   </figcaption>
                 </figure>
               </div>
@@ -126,8 +126,8 @@
                 <figure>
                   <img src="../Imagenes/MicrosoftTeams-image (55).png" class="w-96 h-64">
                   <figcaption>
-                    <h2>Pastillas Anticonceptivas</h2>
-                    <p>cuidate mucho a,igo.</p>
+                    <h2></h2>
+                    <p></p>
                   </figcaption>
                 </figure>
               </div>
@@ -135,8 +135,8 @@
                 <figure>
                   <img src="../Imagenes/MicrosoftTeams-image (58).png" class="w-96 h-64">
                   <figcaption>
-                    <h2>jeringas</h2>
-                    <p>son para mejorar la salud de .</p>
+                    <h2></h2>
+                    <p></p>
                   </figcaption>
                 </figure>
               </div>
@@ -144,8 +144,8 @@
                 <figure>
                   <img src="../Imagenes/MicrosoftTeams-image (59).png" class="w-96 h-64">
                   <figcaption>
-                    <h2>vitaminas</h2>
-                    <p>para au,mnetra las defenzas de como es posible.</p>
+                    <h2></h2>
+                    <p></p>
                   </figcaption>
                 </figure>
               </div>

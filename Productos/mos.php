@@ -20,10 +20,15 @@ if($inc){
             $descripcion = $row['Descripcion'];
         
         ?>
-        
+             <?php
+                 $img=base64_encode($row['Imagen']);
+           //      $imagen = base64_encode($datos ['Imagen']);
+               ?>
       <div class="group relative">
         <div class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-60">
-          <img src="https://images.ecestaticos.com/2OFO72FGrUW2USgjzNyAXE-13_I=/0x143:3974x2379/1338x752/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F742%2F69a%2Fccf%2F74269accf14f3a89df5f365ad6d3f16c.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+        
+          <img  alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full" src="data:$row[Imagen]/jpg;charset=utf8;base64,<?php echo $img ?>"/></th>
+        
         </div>
         <div class="mt-4 flex justify-between">
           <div>

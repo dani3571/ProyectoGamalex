@@ -31,7 +31,7 @@
                         <span class="form_line"></span>
                     </div>
                     <div class="form_group">
-                        <input pattern="[A-Za-z0-9- -.-,]+"  minlength="6" maxlength="40" required 
+                        <input pattern="[A-Za-z0-9- -,]+"  minlength="6" maxlength="40" required 
                         title="Solo letras y numeros. Tamaño mínimo: 6 "type="text" id="Direccion" class="form_input" placeholder=" " name="Direccion" >
                         <label for="Direccion" class="form_label" id="Direccion">Direccion:</label>
                         <span class="form_line"></span>
@@ -77,7 +77,9 @@
              'Laboratorio registrado!',
              'El laboratorio se registro con exito',
              'success'
-             );
+             ).then(function () {
+                   window.location.href = 'index.php';
+            })
              frmajax.reset();
              
         }
