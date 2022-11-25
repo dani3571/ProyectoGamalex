@@ -133,6 +133,8 @@
                             document.getElementById('IdProducto').selectedIndex = document.getElementById('Productos').selectedIndex;
                             document.getElementById('CantidadDisponible').selectedIndex = document.getElementById('Productos').selectedIndex;
                             document.getElementById('PrecioIndividual').selectedIndex = document.getElementById('Productos').selectedIndex;
+                            document.getElementById('IdProducto').value = document.getElementById('Productos').selectedIndex;
+                            document.getElementById('PrecioTotal').value = document.getElementById('PrecioIndividual').value * document.getElementById('Cantidad').value;
                         }
                     ),
                     $('#Cantidad').change(
