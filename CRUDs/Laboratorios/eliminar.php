@@ -22,3 +22,20 @@
 		}
 		echo json_encode($response);
 	}
+
+	/*
+	<?php
+include("../conexion.php");
+$con=conectar();
+
+$IdLaboratorio=$_GET['id'];
+$sql= "UPDATE laboratorio SET Estado= 0 WHERE IdLaboratorio='$IdLaboratorio'";
+
+$query=mysqli_query($con,$sql);
+
+if($query){
+ Header("Location: Index.php");
+}
+	
+	
+	*/

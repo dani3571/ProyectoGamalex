@@ -1,34 +1,94 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-
-<link rel="stylesheet" href="assets/swal2/sweetalert2.min.css" type="text/css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-
-<div class="header-container">
-        <div id="load-products"></div>
-</div>  
-   
-
+<html lang="en">
+    <head>
+        <title>Laboratorios</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/estilosCRUDS.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+		
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="assets/swal2/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="assets/swal2/sweetalert2.min.css" type="text/css" />
+    </head> 
+    <body>
+    <div class="header-container">
+            <?php
+             include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/header.php");
+            ?>
+        </div>
+      <!--Aqui debe estar el header-->
+        <div class="main-container">
+            <div class="titulo">
+                <h1>Registro de Laboratorios</h1>
+            </div>
+            <div class="formulario">
+                <div class="crear">
+                    <a class="link_crear" href="CrearLaboratorio.php">CREAR</a>
+                </div>
+                <table name = "table" id="table" class="tabla">
+                    <thead>
+                        <tr>
+                            <th>IdLaboratorio</th>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+			
+			require_once '../Laboratorios/dbcon.php';
+			$query = "SELECT * FROM Laboratorio where Estado=1";
+			$stmt = $DBcon->prepare($query);
+			$stmt->execute();
+			
+			if($stmt->rowCount() > 0) {
+				
+				while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
+				extract($row);
+				?>
+				<tr>
+		        <th><?php echo $IdLaboratorio; ?></th>
+                <th><?php echo $Nombre; ?></th>
+                <th><?php echo $Direccion; ?></th>
+                <td> 
+              
+                <a href="EditarLaboratorio.php?id=<?php echo $row['IdLaboratorio']?>" class="link_editar">Editar</a>
+                <a style ="cursor :pointer"class="link_eliminar" id="delete_laboratory1"  data-id="<?php echo $IdLaboratorio; ?>" >Eliminar</i></a>
+		    </td>
+		        </tr>
+				<?php
+				}	
+				
+			} else {
+				
+				?>
+		        <tr>
+		        <td colspan="3">No hay plaboratorios en lista</td>
+		        </tr>
+		        <?php
+				
+			}
+			?>
 
-<script>
-	$(document).ready(function(){
-		readLaboratory(); 
-		$(document).on('click', '#delete_laboratory', function(e){
-			var productId = $(this).data('id');
-			SwalDelete(productId);
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+    <script>
+     	$(document).ready(function(){
+		$(document).on('click', '#delete_laboratory1', function(e){
+			var IdLaboratorio = $(this).data('id');
+			SwalDelete(IdLaboratorio);
+		//	$('#tabla').DataTable().ajax.reload();
 			e.preventDefault();
 		});
 		
 	});
-	
-	function SwalDelete(productId){
+	function SwalDelete(IdLaboratorio){
 		  swal({
 			title: 'Estas seguro?',
 			text: "Se borrará de forma permanente!",
@@ -45,13 +105,21 @@
 			     $.ajax({
 			   		url: 'eliminar.php',
 			    	type: 'POST',
-			       	data: 'delete='+productId,
+			       	data: 'delete='+IdLaboratorio,
 			       	dataType: 'json'
 			     })
 			     .done(function(response){
-			     	swal('Eliminado!', response.message, response.status);
-					readLaboratory();
-			     })
+			    
+
+	            swal(
+                    'Eliminado!', response.message, response.status,
+                   ).then(function () {
+					location.reload();
+                  })
+			    
+ 
+
+				 })
 			     .fail(function(){
 			     	swal('Oops...', 'Algo salió mal!', 'error');
 			     });
@@ -61,11 +129,6 @@
 		});	
 	}
 	
-	function readLaboratory(){
-		$('#load-products').load('panel.php');	
-	}
-	
-</script>
-</body>
-</html>
+ </script>
+    </html>
 
