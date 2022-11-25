@@ -12,6 +12,8 @@
     $sql4 = "SELECT * FROM producto";
     $query4 = mysqli_query($con,$sql4);
     
+    $sql5 = "SELECT * FROM producto";
+    $query5 = mysqli_query($con,$sql5);
                  
 ?>
 <!DOCTYPE html>
@@ -75,6 +77,7 @@
                 document.getElementById('Total').innerHTML = 0;
                 document.getElementById('Productos').selectedIndex = 0;
                 document.getElementById('CantidadDisponible').selectedIndex = 0;
+                document.getElementById('IdProducto').selectedIndex = 0;
                 document.getElementById('PrecioIndividual').selectedIndex = 0;
                 document.getElementById('Cantidad').selectedIndex = 0;
                 document.getElementById('Cantidad').selectedIndex = 0;
@@ -127,6 +130,7 @@
                     ),
                     $('#Productos').change(
                         function(){
+                            document.getElementById('IdProducto').selectedIndex = document.getElementById('Productos').selectedIndex;
                             document.getElementById('CantidadDisponible').selectedIndex = document.getElementById('Productos').selectedIndex;
                             document.getElementById('PrecioIndividual').selectedIndex = document.getElementById('Productos').selectedIndex;
                         }
@@ -264,11 +268,31 @@
                             </div>
                         </div>
                         <div class="form_container">
+                    
                             <div class="form_group">
-                                <input type="text" id="IdProducto" class="form_input" placeholder=" " value="1" name="IdProducto" readonly>
+                                <select id="IdProducto" class="form_input" name="IdProducto" disabled>
+                                    <option>-----</option>
+                                    <?php
+                                        while($productos = mysqli_fetch_array($query5)){
+                                    ?>
+                                        <option><?php  echo $productos['IdProducto']?> </option>   
+                                    <?php 
+                                        }
+                                    ?>
+                                    <!--<option>-----</option>
+                                    <option>40</option>
+                                    <option>20</option>
+                                    <option>13</option>-->
+                                </select>
                                 <label for="IdProducto" class="form_label">Id Producto:</label>
-                                <span class="form_line"></span>
                             </div>
+
+
+
+
+
+
+
                             <div class="form_group">
                                 <input type="text" id="Apellido" class="form_input" placeholder=" " name="Apellido">
                                 <label for="Apellido" class="form_label">Apellido:</label>
