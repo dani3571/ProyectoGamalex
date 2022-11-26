@@ -130,12 +130,13 @@
                     ),
                     $('#Productos').change(
                         function(){
-                            document.getElementById('IdProducto').selectedIndex = document.getElementById('Productos').selectedIndex;
+
                             document.getElementById('CantidadDisponible').selectedIndex = document.getElementById('Productos').selectedIndex;
                             document.getElementById('PrecioIndividual').selectedIndex = document.getElementById('Productos').selectedIndex;
                             document.getElementById('IdProducto').value = document.getElementById('Productos').selectedIndex;
+
                             document.getElementById('PrecioTotal').value = document.getElementById('PrecioIndividual').value * document.getElementById('Cantidad').value;
-                        }
+                       }
                     ),
                     $('#Cantidad').change(
                         function(){
@@ -270,29 +271,15 @@
                             </div>
                         </div>
                         <div class="form_container">
-                    
-                            <div class="form_group">
-                                <select id="IdProducto" class="form_input" name="IdProducto" disabled>
-                                    <option>-----</option>
-                                    <?php
-                                        while($productos = mysqli_fetch_array($query5)){
-                                    ?>
-                                        <option><?php  echo $productos['IdProducto']?> </option>   
-                                    <?php 
-                                        }
-                                    ?>
-                                    <!--<option>-----</option>
-                                    <option>40</option>
-                                    <option>20</option>
-                                    <option>13</option>-->
-                                </select>
+                    <div class="form_group">
+
+                                <input type="text" id="IdProducto" class="form_input" placeholder=" " value="1" name="IdProducto" readonly>
+
                                 <label for="IdProducto" class="form_label">Id Producto:</label>
+
+                                <span class="form_line"></span>
+
                             </div>
-
-
-
-
-
 
 
                             <div class="form_group">

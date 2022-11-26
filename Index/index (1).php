@@ -21,7 +21,7 @@
               />
             </div>
             <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
-              <form method="post" action="./Autenticacion/Autenticacion.php">
+              <form method="post" action="./Autenticacion.php">
                 <!-- Email input -->
                 <div class="mb-6">
                   <input
@@ -29,6 +29,7 @@
                     class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Carnet de identidad"
                     name = "CI"
+                    id = "CI"
                   />
                 </div>
       
@@ -38,7 +39,8 @@
                     type="password"
                     class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Contraseña"
-                    name = "Password"
+                    name = "Contraseña"
+                    id = "Contraseña"
                   />
                 </div>
       

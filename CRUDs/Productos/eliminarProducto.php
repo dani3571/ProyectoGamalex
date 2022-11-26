@@ -4,8 +4,9 @@ include("../conexion.php");
 $con=conectar();
 
 $IdProducto=$_GET['id'];
-
-$sql="DELETE FROM producto  WHERE IdProducto='$IdProducto'";
+$Estado = 0;
+//$sql="DELETE FROM producto  WHERE IdProducto='$IdProducto'";
+$sql="UPDATE producto SET Estado=$Estado WHERE IdProducto = '$IdProducto'";
 $query=mysqli_query($con,$sql);
 
     if($query){

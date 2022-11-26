@@ -117,8 +117,6 @@
                     'Eliminado!', response.message, response.status,
                    ).then(function () {		
                     location.reload();
-
-				
                     //$("#table").data.ajax.reload();
                   })
 			    

@@ -1,3 +1,9 @@
+<?php 
+    include("../conexion.php");
+    $con=conectar();
+    $sql="SELECT *  FROM usuario";
+    $query=mysqli_query($con,$sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,7 +27,7 @@
             </div>
             <div class="formulario">
                 <div class="crear">
-                    <a class="link_crear" href="CrearUsuario.html">CREAR</a>
+                    <a class="link_crear" href="CrearUsuario.php">CREAR</a>
                 </div>
                 <table class="tabla">
                     <thead>
@@ -29,40 +35,33 @@
                             <th>IdUsuario</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
-                            <th>Usuario</th>
-                            <th>Correo</th>
+                            <th>CI</th>
+                            <th>Rol</th>
+                            <th>Estado</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <th>Adrian</th>
-                            <th>Herrera</th>
-                            <th>Adr123</th>
-                            <th>a@gmail.com</th>
-                            <th><a class="link_editar" href="actualizar.php">Editar</a></th>
-                            <th><a class="link_eliminar" href="eliminar.php">Eliminar</a></th>   
-                        </tr>
-                        <tr>
-                            <th>2</th>
-                            <th>Alex</th>
-                            <th>Claros</th>
-                            <th>Clr1234</th>
-                            <th>ale@gmail.com</th>
-                            <th><a class="link_editar" href="actualizar.php">Editar</a></th>
-                            <th><a class="link_eliminar" href="eliminar.php">Eliminar</a></th>   
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <th>Limber</th>
-                            <th>Calle</th>
-                            <th>Lim1234</th>
-                            <th>lim@gmail.com</th>
-                            <th><a class="link_editar" href="actualizar.php">Editar</a></th>
-                            <th><a class="link_eliminar" href="eliminar.php">Eliminar</a></th>   
-                        </tr>
+                        <?php
+                            while($row=mysqli_fetch_array($query)){
+                                if($row[6]!=0)
+                                {
+                        ?>
+                            <tr>
+                                <th><?php echo $row['IdUsuario']?></th>
+                                <th><?php echo $row['Nombre']?></th>   
+                                <th><?php echo $row['Apellido']?></th>
+                                <th><?php echo $row['CI']?></th>
+                                <th><?php echo $row['Rol']?></th>
+                                <th><?php echo $row['Estado']?></th>
+                                <th><a href="./Ventas/actualizarVenta.php?id=<?php echo $row['IdVenta'] ?>" class="link_editar">Editar</a></th>
+                                <th><a href="./eliminarUsuario.php?id=<?php echo $row['IdUsuario'] ?>" class="link_eliminar">Eliminar</a></th>                                        
+                            </tr>
+                        <?php 
+                                }
+                            }
+                        ?>
                     </tbody>
                 </table>           
             </div>  
