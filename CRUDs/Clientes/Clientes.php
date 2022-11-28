@@ -1,8 +1,10 @@
 <?php 
     include('/xampp/htdocs/ProyectoGamalex/CRUDs/conexion.php');
+    include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
     $con = conectar();
     $sql="SELECT *  FROM cliente";
     $query=mysqli_query($con,$sql);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,14 +12,14 @@
         <title>Usuarios</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/estilosCRUDS.css">
+        <link rel="stylesheet" href="../css/newStyles.css">
         <script src="https://cdn.tailwindcss.com"></script>
     </head> 
     <body>
  
     <div class="header-container">
             <?php
-             include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/header.php");
+           
             ?>
         </div>
 
@@ -60,3 +62,6 @@
 
 </html>
 
+<?php
+include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/S.php");
+?>

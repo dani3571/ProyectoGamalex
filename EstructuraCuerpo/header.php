@@ -54,6 +54,8 @@
                     
                       <a href="/ProyectoGamalex/CRUDs/Clientes/Clientes.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Clientes</a>
                  
+                      <a href="/ProyectoGamalex/Reportes/Index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Reportes</a>
+                 
                     </div>
                   </div>
                 </div>

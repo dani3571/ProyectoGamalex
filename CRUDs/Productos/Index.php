@@ -1,13 +1,15 @@
+<?php
+include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Producto</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/estilosCRUDS.css">
+        <link rel="stylesheet" href="../css/b.css">
         <script src="https://cdn.tailwindcss.com"></script>
-
-
+       
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <link href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
@@ -17,9 +19,7 @@
     </head> 
     <body>
     <div class="header-container">
-            <?php
-             include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/header.php");
-            ?>
+            
         </div>
       <!--Aqui debe estar el header-->
         <div class="main-container">
@@ -75,13 +75,10 @@
                 <th><?php echo $IdLaboratorio; ?></th>
                 <th><img width= "200px" height="200px" class="img-responsive" src="data:$row[Imagen]/jpg;charset=utf8;base64,<?php echo $img ?>"/></th>
         
-
-             
-         
                
                 <th><a class="link_editar" href="actualizarProducto.php?id=<?php echo $row['IdProducto'] ?>">Editar</a></th>
                 <th><a class="link_eliminar" href="eliminarProducto.php?id=<?php echo $row['IdProducto'] ?>">Eliminar</a></th>
-                
+          
 		        </tr>
 				<?php
 				}	
@@ -150,3 +147,7 @@
 	}
  </script>
 </html>
+
+<?php
+include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/S.php");
+?>

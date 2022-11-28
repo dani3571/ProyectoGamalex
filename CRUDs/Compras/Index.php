@@ -1,5 +1,6 @@
 <?php 
     include("../conexion.php");
+    include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
     $con=conectar();
     $sql="SELECT IdCompra,FechaCompra,PrecioTotalCompra,Estado,CantidadCompra FROM compra";
     
@@ -11,7 +12,7 @@
         <title>Compras</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/estilosCRUDS.css">
+        <link rel="stylesheet" href="../css/newStyles.css">
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <link href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
@@ -23,7 +24,7 @@
     <body>
         <div class="header-container">
             <?php
-                include("../../EstructuraCuerpo/header.php");
+          //      include("../../EstructuraCuerpo/header.php");
             ?>
         </div>
         <div class="main-container">
@@ -59,9 +60,9 @@
                                             <th><?php  echo $row['CantidadCompra']?></th>
                                         
                                            
-                                            <th><a href="detalleCompra.php?id=<?php echo $row['IdCompra'] ?>" class="link_editar">DetalleCompra</a></th>
+                                            <th><a href="detalleCompra.php?id=<?php echo $row['IdCompra'] ?>" class="link_editar">Detalle Compra</a></th>
                                             <th><a href="eliminarCompra.php?id=<?php echo $row['IdCompra'] ?>" class="link_eliminar">Eliminar</a></th>                                        
-                                       
+                                         
                                         </tr>
                                     <?php 
                                 }
@@ -79,7 +80,8 @@
      	$(document).ready(function(){
 		$(document).on('click', '#delete_laboratory1', function(e){
 			var IdCompra= $(this).data('IdCompra');
-			SwalDelete(IdCompra);	
+			//SwalDelete(IdCompra);
+            alert(IdCompra)
 		//	$('#tabla').DataTable().ajax.reload();
 			e.preventDefault();
 		});
@@ -124,3 +126,6 @@
 	}
  </script>
 </html>
+<?php
+include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/S.php");
+?>

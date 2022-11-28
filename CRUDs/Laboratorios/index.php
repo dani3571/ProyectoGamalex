@@ -1,25 +1,29 @@
+<?php
+include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Laboratorios</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/estilosCRUDS.css">
+        <link rel="stylesheet" href="../css/newStyles.css">
         <script src="https://cdn.tailwindcss.com"></script>
-		
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<link href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/swal2/sweetalert2.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<link rel="stylesheet" href="assets/swal2/sweetalert2.min.css" type="text/css" />
-    </head> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <link href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="sweetalert2.min.js"></script>
+        <link rel="stylesheet" href="sweetalert2.min.css">
+        
+<div id="posicion">
+</head> 
     <body>
     <div class="header-container">
             <?php
-             include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/header.php");
+          
+          //include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/header.php");
             ?>
         </div>
       <!--Aqui debe estar el header-->
@@ -61,7 +65,6 @@
                 <td> 
                 <a href="EditarLaboratorio.php?id=<?php echo $row['IdLaboratorio']?>" class="link_editar">Editar</a>
                 <a style ="cursor :pointer"class="link_eliminar" id="delete_laboratory1" data-id="<?php echo $IdLaboratorio; ?>" >Eliminar</i></a>		
-	
 			</td>
 		        </tr>
 				<?php
@@ -81,6 +84,28 @@
                 </table>
             </div>
         </div>
+		<template id="my-template">
+        <swal-title>
+        Save changes to "Untitled 1" before closing?
+  </swal-title>
+  <swal-icon type="warning" color="red"></swal-icon>
+  <swal-button type="confirm">
+    Save As
+  </swal-button>
+  <swal-button type="cancel">
+    Cancel
+  </swal-button>
+  <swal-button type="deny">
+    Close without Saving
+  </swal-button>
+  <swal-param name="allowEscapeKey" value="false" />
+  <swal-param
+    name="customClass"
+    value='{ "popup": "my-popup" }' />
+  <swal-function-param
+    name="didOpen"
+    value="popup => console.log(popup)" />
+</template>
     </body>
     <script>
      	$(document).ready(function(){
@@ -95,7 +120,7 @@
 		  Swal.fire({
 			title: 'Estas seguro?',
 			text: "Se borrará de forma permanente!",
-			type: 'warning',
+			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
@@ -128,7 +153,14 @@
 		    },
 			allowOutsideClick: false			  
 		});	
+
 	}
  </script>
     </html>
+    </div>
+
+
+   <?php
+  include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/S.php");
+   ?>
 

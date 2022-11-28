@@ -1,8 +1,21 @@
+<?php
+include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Laboratorios</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.tailwindcss.com"></script>
+      
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
 }
 body{
     font-family: 'Roboto', sans-serif;
@@ -92,17 +105,21 @@ h1 {
 .main-container {
     background-color: #fff;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 80px;
+    margin-left: 180px;
     width: 90%;
     max-width: 1150px;
-    min-width: 800px;
+    min-width: 1000px;
     padding: 4.5em 3em;
     border-radius: 10px;
     box-shadow: 0 5px 10px -5px rgb(0, 0, 0 / 30%);
     text-align: center;
+    
+    /*
     position: absolute;
     top: -30;
     right: 50px;
+    */
 }
 .titulo {
     width: 100%;
@@ -194,3 +211,76 @@ h1 {
         font-size: 1.8rem;
     }
 }
+
+</style>
+    </head> 
+
+    <body>
+        
+      <!--Aqui debe estar el header-->
+
+        <div class="main-container">
+            
+            <div class="titulo">
+                
+                <h1>Reportes del dia 26/11/2022</h1>
+            </div>
+            <div class="formulario">
+                <div class="crear">
+                    <a class="link_crear" href="CrearLaboratorio.php">CREAR</a>
+                </div>
+                <table name= "table" id="table" class="tabla">
+                    <thead>
+                        <tr>
+                            <th>NOMBRE MEDICAMENTO</th>
+                            <th>CANTIDAD VENDIDA</th>
+                            <th>GANANCIA</th>
+                          
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+			
+            require_once '/xampp/htdocs/ProyectoGamalex/CRUDs/Laboratorios/dbcon.php';
+			$query = "SELECT b.Nombre, SUM(c.Cantidad) as Cantidad , SUM(c.Cantidad * b.PrecioUnidad) AS Ganancia FROM `detalleventa` a INNER JOIN producto b on a.IdProducto = b.IdProducto INNER JOIN venta c on a.IdVenta = c.IdVenta  GROUP BY b.nombre";
+		
+            $stmt = $DBcon->prepare($query);
+			$stmt->execute();
+			
+			if($stmt->rowCount() > 0) {
+				
+				while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
+				extract($row);
+				?>
+				<tr>
+		        
+                <th><?php echo $Nombre; ?></th>
+                <th><?php echo $Cantidad; ?></th>
+                <th><?php echo $Ganancia; ?></th>
+                <td> 
+         	</td>
+		        </tr>
+				<?php
+				}	
+				
+			} else {
+				
+				?>
+		        <tr>
+		        <td colspan="3">No hay reportes que mostrar por ahora</td>
+		        </tr>
+		        <?php
+				
+			}
+			?>
+                    </tbody>
+                </table>
+            </div>
+    
+    </body>
+
+    </html>
+
+<?php
+include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/S.php");
+?>

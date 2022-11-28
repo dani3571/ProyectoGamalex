@@ -1,5 +1,6 @@
 <?php 
     include("../conexion.php");
+    include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
     $con=conectar();
     $sql="SELECT *  FROM usuario";
     $query=mysqli_query($con,$sql);
@@ -10,14 +11,13 @@
         <title>Usuarios</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/estilosCRUDS.css">
+        <link rel="stylesheet" href="../css/newStyles.css">
         <script src="https://cdn.tailwindcss.com"></script>
     </head> 
     <body>
  
         <div class="header-container">
             <?php
-                include("../../EstructuraCuerpo/header.php");
             ?>
         </div>
 
@@ -55,7 +55,7 @@
                                 <th><?php echo $row['CI']?></th>
                                 <th><?php echo $row['Rol']?></th>
                                 <th><?php echo $row['Estado']?></th>
-                                <th><a href="./Ventas/actualizarVenta.php?id=<?php echo $row['IdVenta'] ?>" class="link_editar">Editar</a></th>
+                               <!--<th><a href="./Ventas/actualizarVenta.php?id=<?php echo $row['IdVenta'] ?>" class="link_editar">Editar</a></th>-->
                                 <th><a href="./eliminarUsuario.php?id=<?php echo $row['IdUsuario'] ?>" class="link_eliminar">Eliminar</a></th>                                        
                             </tr>
                         <?php 
@@ -71,4 +71,6 @@
     </body>
 
 </html>
-
+<?php
+include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/S.php");
+?>

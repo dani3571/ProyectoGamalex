@@ -4,13 +4,16 @@
         <title>Laboratorios</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-       <link rel="stylesheet" href="../css/estilosCRUDS.css">
+        <link rel="stylesheet" href="../css/estilosCRUDS.css">
         <script src="https://cdn.tailwindcss.com"></script>
         <script src = "jquery/jquery-3.6.0.min.js"></script>
-    <link href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/swal2/sweetalert2.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="sweetalert2.min.js"></script>
+        <link rel="stylesheet" href="sweetalert2.min.css">
+
     <!--Aqui debe estar el header  <link rel="stylesheet" href="../css/header.css"> -->
       
          <div class="header-container">
@@ -72,40 +75,24 @@
           });     
         });
     
-        function alertaa(){    
-                swal(
-             'Laboratorio registrado!',
-             'El laboratorio se registro con exito',
-             'success'
-             ).then(function () {
-                   window.location.href = 'index.php';
-            })
-             frmajax.reset();
-             
+        function alertaa(){   
+            Swal.fire({
+			title: 'Laboratorio registrado',
+			text: "El laboratorio se registro con exito",
+			icon: 'success',
+		}).then(function(){
+            window.location.href = 'index.php'; 
+        });	
+            frmajax.reset(); 
         }
         function alertaN(){
-            swal(
-             'El laboratorio no se registro',
-             'Oops no se logro registrar el laboratorio',
-             'error'
-             );
-           
+        Swal.fire({
+			title: 'El laboratorio no se registro',
+			text: "Oops no se logro registrar el laboratorio",
+			icon: 'success',
+		})
         }
     
-    </script>
-    <script>
-        //Validacion 
-        /*
-        fun validar(){
-            if(document.getElementById("Nombre").value.length > 3){
-               alert("a");
-	     	return false;
-	    	}else{
-			alert("El nombre del laboratorio debe ser mayor a 3");
-			return false
-		}
-        */
-        
     </script>
         <?php
        include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/footer.php");

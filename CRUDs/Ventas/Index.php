@@ -1,5 +1,6 @@
 <?php 
     include("../conexion.php");
+    include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
     $con=conectar();
     $sql="SELECT IdVenta,venta.IdUsuario,venta.IdCliente,cliente.NIT,venta.Estado,FechaVenta,Cantidad,
     CONCAT(Usuario.Nombre,' ', Usuario.Apellido) as NombreCompleto  
@@ -13,14 +14,13 @@
         <title>Ventas</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/estilosCRUDS.css">
+        <link rel="stylesheet" href="../css/newStyles.css">
         <script src="https://cdn.tailwindcss.com"></script>
+      
     </head> 
     <body>
         <div class="header-container">
-            <?php
-                include("../../EstructuraCuerpo/header.php");
-            ?>
+         
         </div>
         <div class="main-container">
             <div class="titulo">
@@ -56,7 +56,7 @@
                                 <th><?php  echo $row['FechaVenta']?></th>
                                 <th><?php  echo $row['Cantidad']?></th>  
                                 <th><a href="actualizarVenta.php?id=<?php echo $row['IdVenta'] ?>" class="link_editar">Editar</a></th>
-                                <th><a href="detalleVenta.php?id=<?php echo $row['IdVenta'] ?>" class="link_editar">Detalle Venta</a></th>
+                                <th><a href="detalleVenta.php?id=<?php echo $row['IdVenta'] ?>" class="link_editar">Detalle</a></th>
                                 <th><a href="eliminarVenta.php?id=<?php echo $row['IdVenta'] ?>" class="link_eliminar">Eliminar</a></th>                                        
                             </tr>
                         <?php 
@@ -69,3 +69,7 @@
         </div>
     </body>
 </html>
+
+<?php
+include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/S.php");
+?>
