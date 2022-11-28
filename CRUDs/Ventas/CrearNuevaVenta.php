@@ -70,7 +70,8 @@
                         data: {IdVenta: idVenta, IdProducto : idProducto, Cantidad: cantidad}
                     })
                 }
-                let longitud = tblDatos.length;
+                window.location.href = "Index.php";
+                /*let longitud = tblDatos.length;
                 for (var i = 0; i < longitud; i++) {
                     console.log(tblDatos[0].remove());
                 }
@@ -80,12 +81,12 @@
                 document.getElementById('IdProducto').selectedIndex = 0;
                 document.getElementById('PrecioIndividual').selectedIndex = 0;
                 document.getElementById('Cantidad').selectedIndex = 0;
-                document.getElementById('Cantidad').selectedIndex = 0;
                 document.getElementById('NIT').value = 0;
                 document.getElementById('Apellido').value = "";
                 //document.getElementById('cantidadSumada').value = 0;
                 //jQuery(document).load(window.location.href);
-                //window.location.reload();
+                //window.location.reload();*/
+                
             });
             $(document).ready(
                 function funcionInicial(){
@@ -103,8 +104,6 @@
                                 {
                                     let tblDatos = document.getElementById('tablaContenido').insertRow(contador);
                                     contador++;
-                                    console.log(contador);
-                                    console.log(document.getElementById('cantidadSumada').value);
                                     let IdProducto = tblDatos.insertCell(0);
                                     let Productos = tblDatos.insertCell(1);
                                     let Precio = tblDatos.insertCell(2);
@@ -114,11 +113,12 @@
                                     IdProducto.innerHTML = document.getElementById('IdProducto').value;
                                     Productos.innerHTML = document.getElementById('Productos').value;
                                     Precio.innerHTML = document.getElementById('PrecioIndividual').value;
-                                    Cantidad.innerHTML = document.getElementById('Cantidad').value;
+                                    Cantidad.innerHTML = parseInt(Cantida.innerHTML.toString()) + document.getElementById('Cantidad').value;
                                     PrecioTotal.innerHTML = document.getElementById('PrecioTotal').value;
                                     Eliminar.classList.add('link_eliminar')
                                     Eliminar.innerHTML = "Eliminar";
                                     document.getElementById('Total').innerHTML = (parseFloat(document.getElementById('Total').innerHTML) + parseFloat(document.getElementById('PrecioTotal').value)).toString();
+                                    
                                     //document.getElementById('cantidadSumada').value = (parseInt(document.getElementById('cantidadSumada').value)) + (parseInt(document.getElementById('Cantidad').value));
                                 }
                             }
@@ -133,7 +133,7 @@
 
                             document.getElementById('CantidadDisponible').selectedIndex = document.getElementById('Productos').selectedIndex;
                             document.getElementById('PrecioIndividual').selectedIndex = document.getElementById('Productos').selectedIndex;
-                            document.getElementById('IdProducto').value = document.getElementById('Productos').selectedIndex;
+                            document.getElementById('IdProducto').selectedIndex = document.getElementById('Productos').selectedIndex;
 
                             document.getElementById('PrecioTotal').value = document.getElementById('PrecioIndividual').value * document.getElementById('Cantidad').value;
                        }
@@ -173,6 +173,7 @@
                     $("body").on('click',".link_eliminar",function(){
                         console.log($(this).parent().index());
                         document.getElementById('Total').innerHTML = (parseFloat(document.getElementById('Total').innerHTML) - document.getElementById('tablaContenido').children[$(this).parent().index()].children[4].innerHTML).toString();
+                        document.getElementById('Cantidad').innerHTML = (parseFloat(document.getElementById('Cantidad').innerHTML) - document.getElementById('tablaContenido').children[$(this).parent().index()].children[3].innerHTML).toString();
                         //document.getElementById('cantidadSumada').value = (parseInt(document.getElementById('cantidadSumada').value)) - (parseInt(document.getElementById('tablaContenido').children[$(this).parent().index()].children[3].innerHTML).toString());
                         $(this).parent().remove();
                         contador--;
@@ -273,12 +274,17 @@
                         <div class="form_container">
                     <div class="form_group">
 
-                                <input type="text" id="IdProducto" class="form_input" placeholder=" " value="1" name="IdProducto" readonly>
-
+                                <select id="IdProducto" class="form_input" name="IdProducto" disabled>
+                                    <option>-----</option>
+                                    <?php
+                                        while($productos = mysqli_fetch_array($query5)){
+                                    ?>
+                                        <option><?php  echo $productos['IdProducto']?> </option>   
+                                    <?php 
+                                        }
+                                    ?>
+                                </select>
                                 <label for="IdProducto" class="form_label">Id Producto:</label>
-
-                                <span class="form_line"></span>
-
                             </div>
 
 
@@ -297,10 +303,6 @@
                                     <?php 
                                         }
                                     ?>
-                                    <!--<option>-----</option>
-                                    <option>40</option>
-                                    <option>20</option>
-                                    <option>13</option>-->
                                 </select>
                                 <label for="CantidadDisponible" class="form_label">Cantidad disponible:</label>
                             </div>
