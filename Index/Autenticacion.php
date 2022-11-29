@@ -12,35 +12,35 @@ function conectar(){
 
   return $con;
 }
+
 $con=conectar();
 
 $usuario = $_POST['CI'];
 $pass = $_POST['Contraseña'];
-$sql="SELECT * from CI where CI ='$usuario'";
-$result = mysqli_query($con,$sql);
-if($result){
 
-  header("Location: menu.php");
-}
-/*if (empty($usuario) || empty($pass)) {
+if (empty($usuario) || empty($pass)) {
   # code...
   Header("Location: index.php");
   exit();
 }
 
 
-$usuario2;
+
+
+$sql="SELECT IdUsuario from usuario where CI ='$usuario' and Contraseña = '$pass'";
 $result = mysqli_query($con,$sql);
-while($usuario2 = mysqli_fetch_array($result)){
-  if($pass == $usuario2['Contraseña'] && $usuario == $usuario2['CI']){
-    session_start();
-    $_SESSION["CI"] = $usuario;
-    
-    
-}else{
+$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+if($result){
+
+  header("Location: ../Reportes/dashBoard.php");
+  session_start();
+  $_SESSION["IdUsuario"] = $usuario;
+
+}
+else{
+  $error = "Algo salio mal, correo o contraseña incorrecta";
+  Header("Location: index.php");
 }
 
-
-}*/
-
- ?>
+?>
