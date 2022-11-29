@@ -33,10 +33,7 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
             </div>
             <div class="formulario">
                 <div class="crear">
-                    <a class="link_crear" href="CrearLaboratorio.php">CREAR</a>
-                </div>
-                <div class="">
-                    <a class="link_crear" href="reponer.php">Reponer laboratorios</a>
+                    <a class="link_crear" href="index.php">Volver atras</a>
                 </div>
                 <table name= "table" id="table" class="tabla">
                     <thead>
@@ -50,9 +47,8 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
                     </thead>
                     <tbody>
                     <?php
-			
 			require_once '../Laboratorios/dbcon.php';
-			$query = "SELECT * FROM Laboratorio where Estado=1";
+			$query = "SELECT * FROM Laboratorio where Estado=0";
 			$stmt = $DBcon->prepare($query);
 			$stmt->execute();
 			
@@ -66,9 +62,10 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
                 <th><?php echo $Nombre; ?></th>
                 <th><?php echo $Direccion; ?></th>
                 <td> 
-                <a href="EditarLaboratorio.php?id=<?php echo $row['IdLaboratorio']?>" class="link_editar">Editar</a>
-                <a style ="cursor :pointer"class="link_eliminar" id="delete_laboratory1" data-id="<?php echo $IdLaboratorio; ?>" >Eliminar</i></a>		
-			</td>
+                 <a style ="cursor :pointer"class="link_editar" id="delete_laboratory1" data-id="<?php echo $IdLaboratorio; ?>" >Reponer</i></a>		
+                 <a href="ReponerLaboratorio.php?id=<?php echo $row['IdLaboratorio']?>" class="link_eliminar">Eliminar</a>
+        
+                </td>
 		        </tr>
 				<?php
 				}	
@@ -77,7 +74,7 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 				
 				?>
 		        <tr>
-		        <td colspan="3">No hay plaboratorios en lista</td>
+		        <td colspan="3">No hay laboratorios eliminados lista</td>
 		        </tr>
 		        <?php
 				
@@ -121,8 +118,8 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 	});
 	function SwalDelete(IdLaboratorio){
 		  Swal.fire({
-			title: 'Estas seguro?',
-			text: "Se borrará de forma permanente!",
+			title: 'Estas seguro de reponer el laboratorio?',
+			text: "Se mostrara en la lista de laboratorios!",
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
@@ -134,7 +131,7 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 			  return new Promise(function(resolve) {
 			       
 			     $.ajax({
-			   		url: 'eliminar.php',
+			   		url: 'ReponerLaboratorio.php',
 			    	type: 'POST',
 			       	data: 'delete='+IdLaboratorio,
 			       	dataType: 'json'
@@ -142,7 +139,7 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 			     .done(function(response){
 			    
 					Swal.fire(
-                    'Eliminado!', response.message, response.status,
+                    'Laboratorio repuesto!', response.message, response.status,
                    ).then(function () {		
                     location.reload();
                     //$("#table").data.ajax.reload();
