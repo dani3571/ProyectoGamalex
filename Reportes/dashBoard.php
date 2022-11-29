@@ -524,7 +524,7 @@
 
                     <tbody class="text-sm divide-y divide-gray-100">
 
-                <?php
+            <?php
 			$query = "SELECT b.Nombre, SUM(c.Cantidad) as cantidad , b.Cantidad as cantidadexistente FROM `detalleventa` a INNER JOIN producto b on a.IdProducto = b.IdProducto INNER JOIN venta c on a.IdVenta = c.IdVenta GROUP BY b.IdProducto ORDER BY SUM(c.Cantidad) DESC LIMIT 3";
 			$stmt = $DBcon->prepare($query);
 			$stmt->execute();
@@ -661,8 +661,6 @@
 
 
 
-
-
 <!--clientes frecuentes-->
 <div id="posicion4">
 <div class="flex flex-col justify-top h-max">
@@ -685,16 +683,12 @@
                             </th>
                         </tr>
                     </thead>
-
                     <tbody class="text-sm divide-y divide-gray-100">
-
                 <?php
 			$query = "SELECT a.Apellido, SUM(a.NIT) as NIT FROM cliente a INNER JOIN venta b on a.IdCliente = b.IdCliente GROUP BY b.IdCliente ORDER BY SUM(a.NIT) DESC LIMIT 3";
 			$stmt = $DBcon->prepare($query);
 			$stmt->execute();
-			
 			if($stmt->rowCount() > 0) {
-				
 				while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
 				extract($row);
 				?>
@@ -705,21 +699,16 @@
                 <td class="p-2">
                       <div class="text-left"><?php echo $Apellido; ?></div>
                 </td>
-
 				<?php
 				}	
-				
 			} else {
-				
 				?>
 		        <tr>
 		        <td colspan="3">No hay compras en lista</td>
 		        </tr>
-		        <?php
-				
+		        <?php	
 			}
 			?>
-
                     </tbody>
                 </table>
             </div>

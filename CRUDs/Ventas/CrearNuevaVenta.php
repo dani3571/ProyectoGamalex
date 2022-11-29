@@ -113,7 +113,7 @@
                                     IdProducto.innerHTML = document.getElementById('IdProducto').value;
                                     Productos.innerHTML = document.getElementById('Productos').value;
                                     Precio.innerHTML = document.getElementById('PrecioIndividual').value;
-                                    Cantidad.innerHTML = parseInt(Cantida.innerHTML.toString()) + document.getElementById('Cantidad').value;
+                                    Cantidad.innerHTML = document.getElementById('Cantidad').value;
                                     PrecioTotal.innerHTML = document.getElementById('PrecioTotal').value;
                                     Eliminar.classList.add('link_eliminar')
                                     Eliminar.innerHTML = "Eliminar";

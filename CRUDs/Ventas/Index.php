@@ -5,7 +5,7 @@
     $sql="SELECT IdVenta,venta.IdUsuario,venta.IdCliente,cliente.NIT,venta.Estado,FechaVenta,Cantidad,
     CONCAT(Usuario.Nombre,' ', Usuario.Apellido) as NombreCompleto  
     FROM venta inner join Usuario on venta.IdUsuario = Usuario.IdUsuario
-    inner join cliente on venta.IdCliente = cliente.IdCliente";
+    inner join cliente on venta.IdCliente = cliente.IdCliente order by IdVenta";
     $query=mysqli_query($con,$sql);
 ?>
 <!DOCTYPE html>
