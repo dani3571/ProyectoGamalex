@@ -9,7 +9,8 @@
                     <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
                     <div style="min-height: auto; position:fixed; z-index:auto" class="w-64 absolute sm:relative bg-gray-800 shadow md:h-full flex-col justify-between hidden sm:flex">
                         <div class="px-8">
-                         <h1 style="font-size: 40px; color:antiquewhite;">Farmacia Gamalex</h1>
+      
+                         <h1 style="font-size: 40px; color:antiquewhite;">Gamalex</h1>
                          
                             <ul class="mt-12">
                                 <li class="flex w-full justify-between text-gray-300 cursor-pointer items-center mb-6">

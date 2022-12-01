@@ -39,8 +39,22 @@
                         <label for="Direccion" class="form_label" id="Direccion">Direccion:</label>
                         <span class="form_line"></span>
                     </div> 
-                        <input id="btnGuardar" type="submit" class="form_submit" value="Guardar" onclick= 'validar()'>
-
+                    <div class="form_group">
+                        <input pattern="[A-Za-z- ]+"  minlength="4" maxlength="30" required 
+                        title="Solo letras. Tamaño mínimo: 4 "type="text" id="NombreEncargado" class="form_input" placeholder=" " name="NombreEncargado" >
+                        <label for="NombreEncargado" class="form_label" id="NombreEncargado">Nombre del encargado:</label>
+                        <span class="form_line"></span>
+                    </div> 
+                 
+                    <div class="form_group">
+                        <input pattern="[A-Za-z- ]+"  minlength="4" maxlength="30" required 
+                        title="Solo letras. Tamaño mínimo: 4 "type="number" id="TelefonoEncargado" class="form_input" placeholder=" " name="TelefonoEncargado" >
+                        <label for="TelefonoEncargado" class="form_label" id="TelefonoEncargado">Numero de telefono del encargado:</label>
+                        <span class="form_line"></span>
+                    </div> 
+                 
+                    <input id="btnGuardar" type="submit" class="form_submit" value="Guardar" onclick= 'validar()'>
+                    <a style="color:blue" href="index.php"><~ Regresar</a>
                     
                     </div>
             </form>
@@ -52,7 +66,6 @@
                 if(document.getElementById("Nombre").value.length > 3  &&
                 document.getElementById("Direccion").value.length >= 6  ){
                     var datos =$('#frmajax').serialize();
-                   
                     $.ajax({
                      
                         type:"POST",

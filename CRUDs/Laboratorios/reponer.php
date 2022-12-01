@@ -16,7 +16,17 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="sweetalert2.min.js"></script>
         <link rel="stylesheet" href="sweetalert2.min.css">
-        
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+       <style>
+          .estado { 
+           font-size: 20px;
+           margin-left: 690px;
+           margin-top: 1px;
+           padding-top: 1px;
+          }
+
+       </style>
 <div id="posicion">
 </head> 
     <body>
@@ -29,11 +39,16 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
       <!--Aqui debe estar el header-->
         <div class="main-container">
             <div class="titulo">
-                <h1>Registro de Laboratorios</h1>
+                <h1>Cambio de estado de Laboratorios</h1>
             </div>
+            <div class="estado">
+            <ion-icon style="color:lightgreen" name="ellipse"></ion-icon> Activo &nbsp;&nbsp;&nbsp;<ion-icon style="color: red;" name="ellipse"></ion-icon> Inactivo<br>
+             </div>
+        
             <div class="formulario">
                 <div class="crear">
-                    <a class="link_crear" href="index.php">Volver atras</a>
+                    <a class="link_crear" href="index.php"><~ Regresar</a>   
+                    <th><a style ="cursor :pointer"class="link_eliminar" id="deletePermanentAll_laboratory">Eliminar Todo</i></a>	</th>	 
                 </div>
                 <table name= "table" id="table" class="tabla">
                     <thead>
@@ -41,12 +56,17 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
                             <th>IdLaboratorio</th>
                             <th>Nombre</th>
                             <th>Direccion</th>
+                            <th>Nombre del encargado</th>
+                            <th>Numero de telefono</th>
+                            <th>Estado</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
+			
 			require_once '../Laboratorios/dbcon.php';
 			$query = "SELECT * FROM Laboratorio where Estado=0";
 			$stmt = $DBcon->prepare($query);
@@ -61,11 +81,13 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 		        <th><?php echo $IdLaboratorio; ?></th>
                 <th><?php echo $Nombre; ?></th>
                 <th><?php echo $Direccion; ?></th>
+                <th><?php echo $NombreEncargado; ?></th>
+                <th><?php echo $TelefonoEncargado; ?></th>
+                <th><ion-icon style="color:red" name="ellipse"></ion-icon></ion-icon></th>
                 <td> 
-                 <a style ="cursor :pointer"class="link_editar" id="delete_laboratory1" data-id="<?php echo $IdLaboratorio; ?>" >Reponer</i></a>		
-                 <a href="ReponerLaboratorio.php?id=<?php echo $row['IdLaboratorio']?>" class="link_eliminar">Eliminar</a>
-        
-                </td>
+              <th><a style ="cursor :pointer"class="link_editar" id="delete_laboratory1" data-id="<?php echo $IdLaboratorio; ?>" >Reponer</i></a>	</th>	
+              <th><a style ="cursor :pointer"class="link_eliminar" id="deletePermanent_laboratory" data-id="<?php echo $IdLaboratorio; ?>" >Eliminar</i></a>	</th>	
+            </td>
 		        </tr>
 				<?php
 				}	
@@ -84,6 +106,8 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
                 </table>
             </div>
         </div>
+
+
 		<template id="my-template">
         <swal-title>
         Save changes to "Untitled 1" before closing?
@@ -108,7 +132,8 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 </template>
     </body>
     <script>
-     	$(document).ready(function(){
+    //Reponer laboratorios -- cambio de estado
+    $(document).ready(function(){
 		$(document).on('click', '#delete_laboratory1', function(e){
 			var IdLaboratorio = $(this).data('id');
 			SwalDelete(IdLaboratorio);	
@@ -116,20 +141,36 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 			e.preventDefault();
 		});
 	});
+  //Eliminar laboratorio permanentemente
+  $(document).ready(function(){
+		$(document).on('click', '#deletePermanent_laboratory', function(e){
+			var IdLaboratorio = $(this).data('id');
+			SwalDeletePermanent(IdLaboratorio);	
+		//	$('#tabla').DataTable().ajax.reload();
+			e.preventDefault();
+		});
+	});
+  //Eliminar todos los laboratorios inactivos
+  $(document).ready(function(){
+		$(document).on('click', '#deletePermanentAll_laboratory', function(e){
+			SwalDeletePermanentAll();	
+		//	$('#tabla').DataTable().ajax.reload();
+			e.preventDefault();
+		});
+	});
 	function SwalDelete(IdLaboratorio){
-		  Swal.fire({
-			title: 'Estas seguro de reponer el laboratorio?',
-			text: "Se mostrara en la lista de laboratorios!",
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
-			confirmButtonText: 'Si, bórralo!',
-			showLoaderOnConfirm: true,
+   Swal.fire({
+		  	title: 'Estas seguro de reponer el laboratorio?',
+			  text: "Se mostrara en la lista de laboratorios!",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Si, reponlo!',
+			  showLoaderOnConfirm: true,
 			  
-			preConfirm: function() {
-			  return new Promise(function(resolve) {
-			       
+			 preConfirm: function() {
+			  return new Promise(function(resolve) {  
 			     $.ajax({
 			   		url: 'ReponerLaboratorio.php',
 			    	type: 'POST',
@@ -152,9 +193,86 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 			  });
 		    },
 			allowOutsideClick: false			  
-		});	
-
-	}
+		});
+   }
+   //Eliminar un laboratorio especifico permanentemente
+   function SwalDeletePermanent(IdLaboratorio){
+    Swal.fire({
+		  	title: 'Estas seguro de eliminar permanentemente el laboratorio?',
+			  text: "Se eliminara para siempre!",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Si, bórralo!',
+			  showLoaderOnConfirm: true,
+			  
+			 preConfirm: function() {
+			  return new Promise(function(resolve) {  
+			     $.ajax({
+			   		url: 'deletePermanent.php',
+			    	type: 'POST',
+			       	data: 'delete='+IdLaboratorio,
+			       	dataType: 'json'
+			     })
+			     .done(function(response){
+			    
+					Swal.fire(
+                    'Laboratorio eliminado!', response.message, response.status,
+                   ).then(function () {		
+                    location.reload();
+                    //$("#table").data.ajax.reload();
+                  })
+			    
+				 })
+			     .fail(function(){
+					Swal.fire('Oops...', 'Algo salió mal!', 'error');
+			     });
+			  });
+		    },
+			allowOutsideClick: false			  
+		});
+   }
+   //Eliminar todos los laboratorios con estado = 0 
+   function SwalDeletePermanentAll(){
+   
+    Swal.fire({
+		  	title: 'Estas seguro de eliminar permanentemente todos los laboratorios?',
+			  text: "Se eliminaran por siempre!",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Si, bórralo!',
+			  showLoaderOnConfirm: true,
+			  
+			 preConfirm: function() {
+			  return new Promise(function(resolve) {  
+			     $.ajax({
+			   		url: 'deletePermanentAll.php',
+			    	type: 'POST',
+            data: datos
+         
+			      
+             })
+			     .done(function(response){
+			    
+					Swal.fire(
+                    'Laboratorios inactivos eliminados!', 'a', 'asd',
+                   ).then(function () {		
+                    location.reload();
+                    //$("#table").data.ajax.reload();
+                  })
+			    
+				 })
+			     .fail(function(){
+					Swal.fire('Oops...', 'Algo salió mal!', 'error');
+			     });
+			  });
+		    },
+			allowOutsideClick: false			  
+		});
+   }
  </script>
     </html>
     </div>

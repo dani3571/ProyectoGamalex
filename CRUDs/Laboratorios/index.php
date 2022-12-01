@@ -16,34 +16,51 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="sweetalert2.min.js"></script>
         <link rel="stylesheet" href="sweetalert2.min.css">
-        
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <style>
+          .estado { 
+           font-size: 20px;
+           margin-left: 690px;
+           margin-top: 1px;
+           padding-top: 1px;
+          }
+
+        </style>
 <div id="posicion">
 </head> 
     <body>
     <div class="header-container">
-            <?php
-          
+            <?php  
           //include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/header.php");
             ?>
         </div>
       <!--Aqui debe estar el header-->
-        <div class="main-container">
-            <div class="titulo">
+    
+      <div class="main-container">
+   
+      <div class="titulo">
                 <h1>Registro de Laboratorios</h1>
-            </div>
+        </div>
+        <div class="estado">
+            <ion-icon style="color:lightgreen" name="ellipse"></ion-icon> Activo &nbsp;&nbsp;&nbsp;<ion-icon style="color: red;" name="ellipse"></ion-icon> Inactivo<br>
+        </div>
             <div class="formulario">
                 <div class="crear">
                     <a class="link_crear" href="CrearLaboratorio.php">CREAR</a>
+                    <a style="margin-left:2px;"class="link_crear" href="reponer.php">Reponer laboratorios</a>
                 </div>
-                <div class="">
-                    <a class="link_crear" href="reponer.php">Reponer laboratorios</a>
-                </div>
+             
                 <table name= "table" id="table" class="tabla">
                     <thead>
                         <tr>
                             <th>IdLaboratorio</th>
                             <th>Nombre</th>
                             <th>Direccion</th>
+                            <th>Nombre del encargado</th>
+                            <th>Numero de telefono</th>
+                            <th>Estado</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -65,9 +82,12 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 		        <th><?php echo $IdLaboratorio; ?></th>
                 <th><?php echo $Nombre; ?></th>
                 <th><?php echo $Direccion; ?></th>
+                <th><?php echo $NombreEncargado; ?></th>
+                <th><?php echo $TelefonoEncargado; ?></th>
+                <th><ion-icon style= "color:lightgreen;"name="ellipse"></ion-icon></ion-icon></th>
                 <td> 
-                <a href="EditarLaboratorio.php?id=<?php echo $row['IdLaboratorio']?>" class="link_editar">Editar</a>
-                <a style ="cursor :pointer"class="link_eliminar" id="delete_laboratory1" data-id="<?php echo $IdLaboratorio; ?>" >Eliminar</i></a>		
+              <th><a href="EditarLaboratorio.php?id=<?php echo $row['IdLaboratorio']?>" class="link_editar">Editar</a></th>
+              <th><a style ="cursor :pointer"class="link_eliminar" id="delete_laboratory1" data-id="<?php echo $IdLaboratorio; ?>" >Eliminar</i></a>	</th>	
 			</td>
 		        </tr>
 				<?php
@@ -87,7 +107,8 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
                 </table>
             </div>
         </div>
-		<template id="my-template">
+<!--
+        <template id="my-template">
         <swal-title>
         Save changes to "Untitled 1" before closing?
   </swal-title>
@@ -109,7 +130,8 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
     name="didOpen"
     value="popup => console.log(popup)" />
 </template>
-    </body>
+-->    
+</body>
     <script>
      	$(document).ready(function(){
 		$(document).on('click', '#delete_laboratory1', function(e){
@@ -122,12 +144,12 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 	function SwalDelete(IdLaboratorio){
 		  Swal.fire({
 			title: 'Estas seguro?',
-			text: "Se borrará de forma permanente!",
+			text: "El laboratorio cambiara a estado inactivo!",
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
-			confirmButtonText: 'Si, bórralo!',
+			confirmButtonText: 'Si, cambialo!',
 			showLoaderOnConfirm: true,
 			  
 			preConfirm: function() {

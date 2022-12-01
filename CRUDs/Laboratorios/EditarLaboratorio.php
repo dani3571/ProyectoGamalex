@@ -45,6 +45,21 @@ $row2=mysqli_fetch_array($query2);
                         <label for="Direccion" class="form_label">Direccion:</label>
                         <span class="form_line"></span>
                     </div>
+
+                    <div class="form_group">
+                        <input pattern="[A-Za-z- ]+"  minlength="4" maxlength="30" required 
+                        title="Solo letras. Tamaño mínimo: 4 "type="text" id="NombreEncargado" class="form_input" placeholder=" " name="NombreEncargado" value="<?php echo $row2['NombreEncargado']  ?>" >
+                        <label for="NombreEncargado" class="form_label" id="NombreEncargado">Nombre del encargado:</label>
+                        <span class="form_line"></span>
+                    </div> 
+                 
+                    <div class="form_group">
+                        <input pattern="[A-Za-z- ]+"  minlength="4" maxlength="30" required 
+                        title="Solo letras. Tamaño mínimo: 4 "type="number" id="TelefonoEncargado" class="form_input" placeholder=" " name="TelefonoEncargado" value="<?php echo $row2['TelefonoEncargado']  ?>">
+                        <label for="TelefonoEncargado" class="form_label" id="TelefonoEncargado">Numero de telefono del encargado:</label>
+                        <span class="form_line"></span>
+                    </div> 
+                 
                     <input type="submit" class="form_submit" value="Guardar">
                     <a style="color:blue" href="index.php"><~ Regresar</a>
                 </div>

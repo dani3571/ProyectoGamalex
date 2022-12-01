@@ -169,6 +169,13 @@ h1 {
     border-radius: .5em;
     padding: 14px;
 }
+  
+.estado { 
+    font-size: 20px;
+    margin-left: 690px;
+    margin-top: 1px;
+    padding-top: 1px;
+  }
 
 .link_eliminar{
     text-decoration: none;
