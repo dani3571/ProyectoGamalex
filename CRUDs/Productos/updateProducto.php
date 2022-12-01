@@ -18,12 +18,12 @@ $IdLaboratorio=$_POST['IdLaboratorio'];
 //$Estado=1;
 $Imagen=$_FILES['Imagen']['tmp_name'];
 $imgContent=addslashes(file_get_contents($Imagen));
-
+$NombreC=$_POST['NombreC'];
 //$imagen = addslashes(file_get_contents($_FILES['Imagen']['tmp_name']));
-$a = null;
+
 
 //$sql="UPDATE producto set Nombre='$Nombre',Cantidad='$Cantidad',PrecioUnidad='$PrecioUnidad',PrecioTotalProducto='$PrecioTotalProducto',Descripcion='$Descripcion',$Estado=1,Imagen= null, IdLaboratorio='$IdLaboratorio'WHERE IdProducto='$IdProducto'";
-$sql="UPDATE producto set Nombre='$Nombre',Cantidad='$Cantidad',PrecioUnidad='$PrecioUnidad',PrecioTotalProducto='$PrecioTotalProducto',Descripcion='$Descripcion', Imagen = '$imgContent' WHERE IdProducto='$IdProducto'";
+$sql="UPDATE producto set Nombre='$Nombre',Cantidad='$Cantidad',PrecioUnidad='$PrecioUnidad',PrecioTotalProducto='$PrecioTotalProducto',Descripcion='$Descripcion', Imagen = '$imgContent',NombreC='$NombreC' WHERE IdProducto='$IdProducto'";
 
 $query= mysqli_query($con,$sql);
 

@@ -6,7 +6,12 @@
     $id=$_GET['id'];
     $sql="SELECT * FROM producto where IdProducto='$id'";
     $query=mysqli_query($con,$sql);
-    $row2=mysqli_fetch_array($query);?>
+    $row2=mysqli_fetch_array($query);
+    $sql5 = "SELECT * FROM categoria";
+    $query5 = mysqli_query($con,$sql5); 
+    $sql6 = "SELECT * FROM unidades";
+    $query6 = mysqli_query($con,$sql6); 
+    ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,6 +22,7 @@
     <link rel="stylesheet" href="../css/estilosCRUDS.css">
         <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
         <div class="header-container">
             <?php
@@ -25,7 +31,7 @@
         </div>
         <div class="form">
         <form action="./updateProducto.php" method="POST" enctype="multipart/form-data" >
-                <h2 class="form_title">Ingrese datos del Laboratorio</h2>
+                <h2 class="form_title">Ingrese datos de la Categoria</h2>
                 <div class="form_container">
                 <input class="form_input" type="hidden" name="IdProducto" value="<?php echo $row2['IdProducto']  ?>">
                     <div class="form_group">
@@ -66,10 +72,40 @@
                         <label for="Direccion" class="form_label">IdLaboratorio:</label>
                         <span class="form_line"></span>
                     </div> 
+
+                     <div class="form_group">
+                                <select id="NombreC" class="form_input" name="NombreC">
+                                    <option selected="true" > <?php echo $row2['NombreC']  ?></option>
+                                    <?php
+                                        while($categoria = mysqli_fetch_array($query5)){
+                                    ?>
+                                        <option  ><?php  echo $categoria['NombreC']?> </option>   
+                                       
+                                    <?php 
+                                        }
+                                    ?> 
+                                </select>
+                                <label for="Productos" class="form_label">Categoria:</label>
+                            </div>
+                            <div class="form_group">
+                                <select id="NombreU" class="form_input" name="NombreU">
+                                    <option disabled="disabled" selected="true" > <?php echo $row2['NombreU']  ?></option>
+                                    <?php
+                                        while($unidades = mysqli_fetch_array($query6)){
+                                    ?>
+                                        <option  ><?php  echo $unidades['NombreU']?> </option>   
+                                       
+                                    <?php 
+                                        }
+                                    ?> 
+                                </select>
+                                <label for="Productos" class="form_label">Tipo Unidad:</label>
+                            </div>
+                    
                     <div  class="frm"  >
             <label for="Productos" class="form_label">Seleccione la imagen:</label>
        
-            <input type="file" name="Imagen"/>
+            <input type="file" accept="image/jpeg"  name="Imagen"/>
         </div>
                     <input class="form_input" type="submit" class="form_submit" value="Guardar">
                     <a style="color:blue" href="index.php"><~ Regresar</a>

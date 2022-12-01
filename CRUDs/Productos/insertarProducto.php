@@ -9,18 +9,12 @@ $PrecioUnidad=$_POST['PrecioUnidad'];
 $PrecioTotalProducto=$_POST['PrecioTotalProducto'];
 $Descripcion=$_POST['Descripcion'];
 $IdLaboratorio=$_POST['IdLaboratorio'];
-/*$check = getimagesize($_FILES["Imagen"]["tmp_name"]);
-if($check !== false){
-    $Imagen=$_FILES['Imagen']['tmp_name'];
-    $imgContent=addslashes(file_get_contents($Imagen));
-}
-else{
-    $imgContent=null;
-}*/
+$NombreC=$_POST['NombreC'];
+$NombreU=$_POST['NombreU'];
 $Imagen=$_FILES['Imagen']['tmp_name'];
 $imgContent=addslashes(file_get_contents($Imagen));
-$sql="INSERT INTO producto (Nombre, Cantidad, PrecioUnidad, PrecioTotalProducto, Descripcion, Estado,Imagen, IdLaboratorio)
-VALUES('$Nombre','$Cantidad','$PrecioUnidad','$PrecioTotalProducto','$Descripcion', 1,'$imgContent', $IdLaboratorio)";
+$sql="INSERT INTO producto (Nombre, Cantidad, PrecioUnidad, PrecioTotalProducto, Descripcion, Estado,Imagen, IdLaboratorio,NombreC,NombreU)
+VALUES('$Nombre','$Cantidad','$PrecioUnidad','$PrecioTotalProducto','$Descripcion', 1,'$imgContent', '$IdLaboratorio','$NombreC','$NombreU')";
 
 $query= mysqli_query($con,$sql);
 
