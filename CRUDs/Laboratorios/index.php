@@ -2,6 +2,10 @@
 include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 ?>
 
+<?php
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,11 +17,15 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
-		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="sweetalert2.min.js"></script>
         <link rel="stylesheet" href="sweetalert2.min.css">
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<!--Referencia a jspdf-->
+       <script src="../jspdf/dist/jspdf.min.js"></script>
+       <script src="../js/jspdf.plugin.autotable.min.js"></script>
+
         <style>
           .estado { 
            font-size: 20px;
@@ -49,6 +57,7 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
                 <div class="crear">
                     <a class="link_crear" href="CrearLaboratorio.php">CREAR</a>
                     <a style="margin-left:2px;"class="link_crear" href="reponer.php">Reponer laboratorios</a>
+                    <button style="margin-left:2px;" class="link_crear" id="GenerarReporte" class="btn btn-default">Reporte</button>
                 </div>
              
                 <table name= "table" id="table" class="tabla">
@@ -69,10 +78,17 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
                     <?php
 			
 			require_once '../Laboratorios/dbcon.php';
-			$query = "SELECT * FROM Laboratorio where Estado=1";
+			include("/xampp/htdocs/ProyectoGamalex/CRUDs/conexion.php");
+      $query = "SELECT * FROM Laboratorio where Estado=1";
 			$stmt = $DBcon->prepare($query);
 			$stmt->execute();
-			
+
+      $db = conectar();
+      $query2=$db->query("select * from laboratorio");
+      $laboratorio = array();
+      $n=0;
+      while($r=$query2->fetch_object()){$laboratorio[]=$r; $n++;}
+
 			if($stmt->rowCount() > 0) {
 				
 				while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -181,7 +197,32 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 
 	}
  </script>
-    </html>
+
+<script>
+$("#GenerarReporte").click(function(){
+  var pdf = new jsPDF();
+  pdf.text(20,20,"Reporte laboratorios");
+  var columns = ["Nombre", "Direccion", "Nombre Encargado", "Telefono", "Estado"];
+  var data = [
+<?php foreach($laboratorio as $c):?>
+ ["<?php echo $c->Nombre; ?>", "<?php echo $c->Direccion; ?>", "<?php echo $c->NombreEncargado; ?>", "<?php echo $c->TelefonoEncargado; ?>", "<?php   
+  if($c->Estado == 0)
+    echo $c->Estado="Inactivo";
+  else
+    echo $c->Estado="Activo";
+   ?>"],
+<?php endforeach; ?>  
+  ];
+
+  pdf.autoTable(columns,data,
+    { margin:{ top: 25  }}
+  );
+
+  pdf.save('ReporteLaboratorios.pdf');
+
+});
+</script>
+</html>
     </div>
 
 
