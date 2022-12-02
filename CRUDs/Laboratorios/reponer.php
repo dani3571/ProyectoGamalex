@@ -41,10 +41,11 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
             <div class="titulo">
                 <h1>Cambio de estado de Laboratorios</h1>
             </div>
+            <!--
             <div class="estado">
             <ion-icon style="color:lightgreen" name="ellipse"></ion-icon> Activo &nbsp;&nbsp;&nbsp;<ion-icon style="color: red;" name="ellipse"></ion-icon> Inactivo<br>
              </div>
-        
+        -->
             <div class="formulario">
                 <div class="crear">
                     <a class="link_crear" href="index.php"><~ Regresar</a>   
@@ -83,7 +84,7 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
                 <th><?php echo $Direccion; ?></th>
                 <th><?php echo $NombreEncargado; ?></th>
                 <th><?php echo $TelefonoEncargado; ?></th>
-                <th><ion-icon style="color:red" name="ellipse"></ion-icon></ion-icon></th>
+                <th><?php echo "Inactivo" ?></th>
                 <td> 
               <th><a style ="cursor :pointer"class="link_editar" id="delete_laboratory1" data-id="<?php echo $IdLaboratorio; ?>" >Reponer</i></a>	</th>	
               <th><a style ="cursor :pointer"class="link_eliminar" id="deletePermanent_laboratory" data-id="<?php echo $IdLaboratorio; ?>" >Eliminar</i></a>	</th>	

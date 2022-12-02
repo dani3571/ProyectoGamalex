@@ -312,10 +312,10 @@
                     <!-- Remove class [ h-64 ] when adding a card block -->
                     <div class="container mx-auto py-10 h-64 md:w-4/5 w-11/12 px-6">
                         <!-- Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
-                    
+                        <h1 style="font-family: nunito,arial,verdana; font-size:30px">Reporte del dia</h1>
                         <div class="w-full h-full rounded border-dashed border-2 border-gray-300">
                             <!-- Place your content here -->
-                
+                          
                             <div class=" mt-8 grid lg:grid-cols-3 sm:grid-cols-2 p-4 gap-10 ">
             <!--Grid starts here-->
               <?php
@@ -472,23 +472,23 @@
 <style>
    #posicion{
     position: absolute;
-    top: 265px;
+    top: 295px;
     left: 940;
    }
    
    #posicion2{
     position: absolute;
-    top: 265px;
+    top: 295px;
     left: 430;
    }
    #posicion3{
     position: absolute;
-    top: 530px;
+    top: 545px;
     left: 430;
    }
    #posicion4{
     position: absolute;
-    top: 530px;
+    top: 545px;
     left: 1040;
    }
 </style>

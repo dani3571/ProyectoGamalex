@@ -50,9 +50,11 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
       <div class="titulo">
                 <h1>Registro de Laboratorios</h1>
         </div>
+        <!--
         <div class="estado">
             <ion-icon style="color:lightgreen" name="ellipse"></ion-icon> Activo &nbsp;&nbsp;&nbsp;<ion-icon style="color: red;" name="ellipse"></ion-icon> Inactivo<br>
         </div>
+        -->
             <div class="formulario">
                 <div class="crear">
                     <a class="link_crear" href="CrearLaboratorio.php">CREAR</a>
@@ -86,8 +88,8 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
       $db = conectar();
       $query2=$db->query("select * from laboratorio");
       $laboratorio = array();
-      $n=0;
-      while($r=$query2->fetch_object()){$laboratorio[]=$r; $n++;}
+    
+      while($r=$query2->fetch_object()){$laboratorio[]=$r;}
 
 			if($stmt->rowCount() > 0) {
 				
@@ -100,7 +102,7 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
                 <th><?php echo $Direccion; ?></th>
                 <th><?php echo $NombreEncargado; ?></th>
                 <th><?php echo $TelefonoEncargado; ?></th>
-                <th><ion-icon style= "color:lightgreen;"name="ellipse"></ion-icon></ion-icon></th>
+                <th><?php echo "Activo" ?></th>
                 <td> 
               <th><a href="EditarLaboratorio.php?id=<?php echo $row['IdLaboratorio']?>" class="link_editar">Editar</a></th>
               <th><a style ="cursor :pointer"class="link_eliminar" id="delete_laboratory1" data-id="<?php echo $IdLaboratorio; ?>" >Eliminar</i></a>	</th>	
@@ -201,7 +203,9 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 <script>
 $("#GenerarReporte").click(function(){
   var pdf = new jsPDF();
-  pdf.text(20,20,"Reporte laboratorios");
+  const fecha = new Date();
+  pdf.text(20,20,"Reporte de Laboratorios");
+  pdf.text(11,11,"<?php echo "Fecha del reporte: ". date(" d/m/Y")?>");
   var columns = ["Nombre", "Direccion", "Nombre Encargado", "Telefono", "Estado"];
   var data = [
 <?php foreach($laboratorio as $c):?>
@@ -209,15 +213,22 @@ $("#GenerarReporte").click(function(){
   if($c->Estado == 0)
     echo $c->Estado="Inactivo";
   else
-    echo $c->Estado="Activo";
+    echo $c->Estado= "Activo";
    ?>"],
 <?php endforeach; ?>  
   ];
 
-  pdf.autoTable(columns,data,
-    { margin:{ top: 25  }}
+  pdf.autoTable(columns,data,{ 
+    margin:{ top: 25  },
+    alternateRowStyles: {fillColor : [178, 227, 227]},
+    halign: 'center',
+    tableLineColor: [40, 84, 233  ], 
+    tableLineWidth: 0.1,
+    headStyles:{fillColor:[35, 35, 37]}
+    
+    
+    }
   );
-
   pdf.save('ReporteLaboratorios.pdf');
 
 });
