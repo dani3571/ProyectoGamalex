@@ -1,5 +1,5 @@
 <?php
-    include("../conexion.php");
+    include('/xampp/htdocs/ProyectoGamalex/CRUDs/conexion.php');
     $con=conectar();
     $IdCompra = $_POST["IdCompra"];
     $FechaCompra = $_POST["FechaCompra"];

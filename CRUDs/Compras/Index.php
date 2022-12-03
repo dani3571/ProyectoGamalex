@@ -20,6 +20,9 @@
     <script src="assets/swal2/sweetalert2.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="sweetalert2.min.js"></script>
+        <link rel="stylesheet" href="sweetalert2.min.css">
     </head> 
     <body>
         <div class="header-container">
@@ -48,40 +51,89 @@
                     </thead>
                     
                     <tbody>
-                        <?php
-                            while($row = mysqli_fetch_array($query)){
-                                if($row[3]!=0)
-                                {
-                                    ?>
-                                        <tr>
-                                            <th><?php  echo $row['IdCompra']?></th>
-                                            <th><?php  echo $row['FechaCompra']?></th>
-                                            <th><?php  echo $row['PrecioTotalCompra']?></th>
-                                            <th><?php  echo $row['CantidadCompra']?></th>
-                                        
-                                           
-                                            <th><a href="detalleCompra.php?id=<?php echo $row['IdCompra'] ?>" class="link_editar">Detalle Compra</a></th>
-                                            <th><a href="eliminarCompra.php?id=<?php echo $row['IdCompra'] ?>" class="link_eliminar">Eliminar</a></th>                                        
-                                         
-                                        </tr>
-                                    <?php 
-                                }
-                            }
-                        ?>
+                    <?php
+			
+			require_once '../Laboratorios/dbcon.php';
+			$query = "SELECT * FROM compra where Estado=1";
+			$stmt = $DBcon->prepare($query);
+			$stmt->execute();
+			
+			if($stmt->rowCount() > 0) {
+				
+				while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
+				extract($row);
+				?>
+				<tr>
+                <th><?php  echo $row['IdCompra']?></th>
+                <th><?php  echo $row['FechaCompra']?></th>
+                <th><?php  echo $row['PrecioTotalCompra']?></th>
+                <th><?php  echo $row['CantidadCompra']?></th>
+                <td> 
+                <th><a href="detalleCompra.php?id=<?php echo $row['IdCompra'] ?>" class="link_editar">Detalle Compra</a></th>
+                <th><a style ="cursor :pointer"class="link_eliminar" id="delete_laboratory1" data-id="<?php echo $IdCompra; ?>" >Eliminar</i></a></th>		
+			</td>
+		        </tr>
+				<?php
+				}	
+				
+			} else {
+				
+				?>
+		        <tr>
+		        <td colspan="3">No hay plaboratorios en lista</td>
+		        </tr>
+		        <?php
+				
+			}
+			?>
                     </tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+                
                     
                 </table>
             </div>
-            
-        </div>
         
+    </body>
+    <template id="my-template">
+        <swal-title>
+        Save changes to "Untitled 1" before closing?
+  </swal-title>
+  <swal-icon type="warning" color="red"></swal-icon>
+  <swal-button type="confirm">
+    Save As
+  </swal-button>
+  <swal-button type="cancel">
+    Cancel
+  </swal-button>
+  <swal-button type="deny">
+    Close without Saving
+  </swal-button>
+  <swal-param name="allowEscapeKey" value="false" />
+  <swal-param
+    name="customClass"
+    value='{ "popup": "my-popup" }' />
+  <swal-function-param
+    name="didOpen"
+    value="popup => console.log(popup)" />
+</template>
     </body>
     <script>
      	$(document).ready(function(){
 		$(document).on('click', '#delete_laboratory1', function(e){
-			var IdCompra= $(this).data('IdCompra');
-			//SwalDelete(IdCompra);
-            alert(IdCompra)
+			var IdCompra = $(this).data('id');
+			SwalDelete(IdCompra);	
+            
 		//	$('#tabla').DataTable().ajax.reload();
 			e.preventDefault();
 		});
@@ -90,7 +142,7 @@
 		  Swal.fire({
 			title: 'Estas seguro?',
 			text: "Se borrará de forma permanente!",
-			type: 'warning',
+			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
@@ -123,6 +175,7 @@
 		    },
 			allowOutsideClick: false			  
 		});	
+
 	}
  </script>
 </html>

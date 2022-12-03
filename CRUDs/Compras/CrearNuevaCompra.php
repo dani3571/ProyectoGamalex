@@ -25,6 +25,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
         <script src="https://cdn.tailwindcss.com"></script>     
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    
+        <script src="sweetalert2.min.js"></script>
+        <link rel="stylesheet" href="sweetalert2.min.css">
+
        <script>
             $(document).ready(
                 function(){
@@ -44,7 +49,16 @@
                 $.ajax({
                         url: "insertarNuevaCompra.php",
                         method: "post",
-                        data: {IdCompra: idCompra, FechaCompra : fechaCompra, Cantidad: cantidad, Total: total}
+                        data: {IdCompra: idCompra, FechaCompra : fechaCompra, Cantidad: cantidad, Total: total},
+                        success:function(r){
+                             if(r==1)
+                             {
+                                alertaN();
+                             }else{
+                                alertaa();
+                                  
+                             }
+                         }
                 })
                 for (var i = 0; i < tblDatos.length; i++) {
                     var idCompra = document.getElementById('numeroCompra').value;
@@ -159,13 +173,17 @@
         </script>
     </head>
     <body>
+    
     <div class="header-container">
             <?php
                 include("../../EstructuraCuerpo/header.php");
             ?>
-        </div>
+    </div>
+    
         <div class="form">
+        
             <div class="datos_venta_container">
+           
                 <h2 class="form_title">Ingrese datos de la Compra</h2>
                 <div class="main_forms_container">
                     <div class="columns_container">
@@ -257,10 +275,11 @@
                         <input id="aumentarFila" type="submit" class="form_submit" value="Agregar">
                     </div>
                 </div>
-                
+           
             </div>
+                              
             
-            
+    
             <div class="table_container">
                 <div class="table-wrapper">
                     <table id="tblDatos" class="tabla">
@@ -287,13 +306,37 @@
                     <h3>Total Cantidad:</h3>
                     &nbsp;
                     <h3 id="CantidadTotal" >0</h3>
-
-                    <form style="display: inline;" id="evento_formulario">
+                    
+                    <form  style="display: inline;" id="evento_formulario">
                         <input id="TerminarCompra" type="submit" class="form_submit" value="Terminar compra">
                     </form>
                 </div>
+                
             </div>
-            
         </div>
+        <script>
+     
+        
+    
+        function alertaa(){   
+            Swal.fire({
+			title: 'compra registrado',
+			text: "La compra se registro con exito",
+			icon: 'success',
+		}).then(function(){
+            window.location.href = 'index.php'; 
+        });	
+            frmajax.reset(); 
+        }
+        function alertaN(){
+        Swal.fire({
+			title: 'La compra no se registro',
+			text: "Oops no se logro registrar la compra",
+			icon: 'success',
+		})
+        }
+    
+    </script>
+       
     </body>
 </html>
