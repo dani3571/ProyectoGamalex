@@ -68,6 +68,10 @@
             );
             $(document).on('submit','#evento_formulario',function(event){
                 event.preventDefault();
+                if(contador!=0)
+                {
+
+                
                 let nit = document.getElementById('NIT').value.toString();
                 let apellido = document.getElementById('Apellido').value;
                 if(nit!=0&&apellido!="")
@@ -109,7 +113,11 @@
                          }
                     })
                 }
-                
+            }
+            else
+            {
+                alert("Debe escoger un producto");
+            }
             });
             function alertaa(){   
             Swal.fire({
