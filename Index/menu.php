@@ -32,28 +32,34 @@
      //y asi no tener conflicto con el path de xampp
       include("../EstructuraCuerpo/headerVisible.php");
     ?>
-    
+    <div class="col-md-12 text-center">
+            <h2  class="text-9xl font-size: 8rem; /* 128px */
+line-height: 1;">FarmaciaGamalex</h2>
+            <p class="sub-title pad-bt15">Bienvenidos disfruten esta visita<br>Imágenes de la farmacia Gamalex.</p>
+            <hr class="bottom-line">
+          </div>
+   
     <!-- Carrucel de imagenes -->
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <img
               class="object-cover w-full h-max"
-              src="../Imagenes/MicrosoftTeams-image (53).png"
+              src="../Imagenes/una.jpg"
               alt="apple watch photo"
             />
           </div>
           <div class="swiper-slide">
             <img
               class="object-cover w-full h-max"
-              src="../Imagenes/MicrosoftTeams-image (54).png"
+              src="../Imagenes/dos.jpg"
               alt="apple watch photo"
             />
           </div>
           <div class="swiper-slide">
             <img
               class="object-cover w-full h-max"
-              src="../Imagenes/MicrosoftTeams-image (56).png"
+              src="../Imagenes/tres.jpg"
               alt="apple watch photo"
             />
           </div>
@@ -90,8 +96,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <h2 class="service-title pad-bt15">Imagenes de la Farmacia</h2>
-            <p class="sub-title pad-bt15">Estos son nuestros productos mas destacadas de la semana<br>Medicamentos.</p>
+          <h2  class="text-9xl font-size: 8rem; /* 128px */
+line-height: 1;">Productos más vendidos </h2>
+            <p class="sub-title pad-bt15">Estos son nuestros productos más destacadas de la semana<br>Medicamentos.</p>
             <hr class="bottom-line">
           </div>
           <div class="grid grid-cols-3 gap-3">
@@ -154,7 +161,13 @@
       </div>
     </section>
 
-
+    <div class="col-md-12 text-center">
+            <h2  class="text-9xl font-size: 8rem; /* 128px */
+line-height: 1;">Ubicación de la farmacia</h2>
+            <p class="sub-title pad-bt15">En este mapa prodrás ver la universidad<br>Mapa</p>
+            <hr class="bottom-line">
+          </div>
+   
     <!-- Mapa -->
     <div class="embed-responsive embed-responsive-4by3 relative w-full overflow-hidden"
     style="padding-top: 75%">
