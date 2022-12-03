@@ -209,7 +209,11 @@ $("#GenerarReporte").click(function(){
   var columns = ["Nombre", "Direccion", "Nombre Encargado", "Telefono", "Estado"];
   var data = [
 <?php foreach($laboratorio as $c):?>
- ["<?php echo $c->Nombre; ?>", "<?php echo $c->Direccion; ?>", "<?php echo $c->NombreEncargado; ?>", "<?php echo $c->TelefonoEncargado; ?>", "<?php   
+ ["<?php echo $c->Nombre; ?>", 
+ "<?php echo $c->Direccion; ?>", 
+ "<?php echo $c->NombreEncargado; ?>", 
+ "<?php echo $c->TelefonoEncargado; ?>", 
+ "<?php   
   if($c->Estado == 0)
     echo $c->Estado="Inactivo";
   else
