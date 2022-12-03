@@ -86,8 +86,8 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
 			$stmt->execute();
 
       $db = conectar();
-      $query2=$db->query("select * from laboratorio");
-      $laboratorio = array();
+      $query2=$db->query("select * from laboratorio");//cambiar select*from 
+      $laboratorio = array();//productos
     
       while($r=$query2->fetch_object()){$laboratorio[]=$r;}
 

@@ -18,7 +18,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ActualizarProducto</title>
+    <title>Actualizar Producto</title>
     <link rel="stylesheet" href="../css/estilosCRUDS.css">
         <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -102,10 +102,11 @@
                                 <label for="Productos" class="form_label">Tipo Unidad:</label>
                             </div>
                     
-                    <div  class="frm"  >
+                   <!-- <div  class="frm"  >
             <label for="Productos" class="form_label">Seleccione la imagen:</label>
        
             <input type="file" accept="image/jpeg"  name="Imagen"/>
+            -->
         </div>
                     <input class="form_input" type="submit" class="form_submit" value="Guardar">
                     <a style="color:blue" href="index.php"><~ Regresar</a>
