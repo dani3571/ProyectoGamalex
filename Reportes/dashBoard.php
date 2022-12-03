@@ -12,8 +12,13 @@
                     <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
                     <div style="min-height: 816px" class="w-64 absolute sm:relative bg-gray-800 shadow md:h-full flex-col justify-between hidden sm:flex">
                         <div class="px-8">
-                         <h1 style="font-size: 40px; color:antiquewhite;">Farmacia Gamalex</h1>
-                    
+                        <div class="h-16 w-full flex items-center">
+                            
+                        <img style="margin-top:13px" width="70" src="../Imagenes/logoGamalex.png">
+                   
+                        <h1 style="font-size: 30px; color:white; margin-left:10px; margin-top:10px"> Gamalex</h1>  
+                            
+                       </div>
                             <ul class="mt-12">
                                 <li class="flex w-full justify-between text-gray-300 cursor-pointer items-center mb-6">
                                     <a href="javascript:void(0)" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
@@ -491,6 +496,7 @@
     top: 545px;
     left: 1040;
    }
+   
 </style>
 <br>
 <button onclick="window.location= '../CRUDs/Reportes/reportes.php'" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">

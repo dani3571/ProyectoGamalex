@@ -30,11 +30,7 @@
                         <label for="NombreC" class="form_label">Nombre Categoria:</label>
                         <span class="form_line"></span>
                     </div>
-                  
-                   
-                   
-                  
-                            
+                           
                         <input type="submit" class="form_submit" onclick="return foo();"  value="Guardar"  >
                 </div>
                

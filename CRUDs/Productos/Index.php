@@ -40,9 +40,9 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
                             <th>Precio total</th>
                             <th>Descripcion</th>
                             <th>Laboratorio</th>
-                            <th>Imagen</th>
                             <th>Categoria</th>
                             <th>Tipo De Unidad</th>
+                            <th>Imagen</th>
                             <th></th>
                             <th></th>
 
@@ -77,6 +77,7 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
                 <th><?php echo $NombreC; ?></th>
                 <th><?php echo $NombreU; ?></th>
                 <th><img width= "200px" height="200px" class="img-responsive" src="data:$row[Imagen]/jpg;charset=utf8;base64,<?php echo $img ?>"/></th>
+               
         
                
                 <th><a class="link_editar" href="actualizarProducto.php?id=<?php echo $row['IdProducto'] ?>">Editar</a></th>
