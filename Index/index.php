@@ -30,6 +30,10 @@
                     placeholder="Carnet de identidad"
                     name = "CI"
                     id = "CI"
+                    required minlength="6" 
+                    maxlength="9"
+                    title="Letras y Numeros. minimo: 6 maximo:9"
+                    required pattern="[A-Za-z0-9]+"
                   />
                 </div>
       
@@ -41,6 +45,10 @@
                     placeholder="Contraseña"
                     name = "Contraseña"
                     id = "Contraseña"
+                    required minlength="5"
+                    maxlength="50"
+                    title="Letras y Numeros. minimo:5 maximo:50"
+                    required pattern="[A-Za-z0-9]+"
                   />
                 </div>
       

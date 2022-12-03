@@ -267,7 +267,7 @@ h1 {
                                     <?php
                                         while($productos = mysqli_fetch_array($query4)){
                                     ?>
-                                        <option><?php  echo $productos['Nombre']?> </option>   
+                                        
                                         <option><?php  echo $productos['IdLaboratorio']?> </option> 
                                     <?php 
                                         }

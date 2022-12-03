@@ -21,6 +21,9 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!--Referencia a jspdf-->
+    <script src="../jspdf/dist/jspdf.min.js"></script>
+       <script src="../js/jspdf.plugin.autotable.min.js"></script>
     <script src="sweetalert2.min.js"></script>
         <link rel="stylesheet" href="sweetalert2.min.css">
     </head> 
@@ -37,6 +40,7 @@
             <div class="formulario">
                 <div class="crear">
                     <a class="link_crear" href="CrearNuevaCompra.php">CREAR</a>
+                    <button style="margin-left:2px;" class="link_crear" id="GenerarReporte" class="btn btn-default">Reporte</button>        
                 </div>
                 
                 <table class="tabla">
@@ -60,6 +64,11 @@
 			$stmt = $DBcon->prepare($query);
 			$stmt->execute();
 			
+            $db = conectar();
+            $query2=$db->query("select * from compra");//cambiar select*from 
+            $laboratorio = array();//productos
+          
+            while($r=$query2->fetch_object()){$laboratorio[]=$r;}
 			if($stmt->rowCount() > 0) {
 				
 				while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -90,19 +99,6 @@
 			?>
                     </tbody>
 
-
-
-
-
-
-
-
-
-
-
-
-                
-                    
                 </table>
             </div>
         
@@ -180,6 +176,42 @@
 
 	}
  </script>
+ 
+<script>
+$("#GenerarReporte").click(function(){
+  var pdf = new jsPDF();
+  const fecha = new Date();
+  pdf.text(20,20,"Reporte de Laboratorios");
+  pdf.text(11,11,"<?php echo "Fecha del reporte: ". date(" d/m/Y")?>");
+  var columns = ["FechaCompra", "PrecioTotalCompra", "Cantidad compra", "Estado"];
+
+  var data = [
+<?php foreach($laboratorio as $c):?>
+ ["<?php echo $c->FechaCompra; ?>", "<?php echo $c->PrecioTotalCompra; ?>", "<?php echo $c->CantidadCompra; ?>", "<?php   
+  if($c->Estado == 0)
+    echo $c->Estado="Inactivo";
+  else
+    echo $c->Estado= "Activo";
+   ?>"],
+<?php endforeach; ?>  
+  ];
+
+
+  pdf.autoTable(columns,data,{ 
+    margin:{ top: 25  },
+    alternateRowStyles: {fillColor : [178, 227, 227]},
+    halign: 'center',
+    tableLineColor: [40, 84, 233  ], 
+    tableLineWidth: 0.1,
+    headStyles:{fillColor:[35, 35, 37]}
+    
+
+    }
+  );
+  pdf.save('ReporteCompras.pdf');
+
+});
+</script>
 </html>
 <?php
 include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/S.php");

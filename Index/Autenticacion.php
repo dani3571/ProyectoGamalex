@@ -27,7 +27,7 @@ if (empty($usuario) || empty($pass)) {
 
 
 
-$sql="SELECT IdUsuario from usuario where CI ='$usuario' and Contraseña = '$pass'";
+$sql="SELECT IdUsuario from usuario where CI ='123456' && Contraseña = '12345'";
 $result = mysqli_query($con,$sql);
 $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 

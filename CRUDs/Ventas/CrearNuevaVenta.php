@@ -146,7 +146,7 @@
                             {
                                 if(document.getElementById('Cantidad').value.toString().trim()==null||document.getElementById('Cantidad').value.toString().trim()==0)
                                 {
-                                    alert("Introduzca una cantidad válida");
+                                    alert("Introduzca una cantidad menor");
                                 }
                                 else
                                 {

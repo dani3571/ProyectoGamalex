@@ -2,7 +2,7 @@
     include("../conexion.php");
     $con=conectar();
     $IdUsuario = 1;
-    $IdCliente = 1;
+    $IdCliente = 7;
     $Estado = 1;
     $FechaVenta = $_POST["FechaVenta"];
     $Cantidad = $_POST["Cantidad"];

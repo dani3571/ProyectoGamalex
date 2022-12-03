@@ -34,7 +34,7 @@
     ?>
     <div class="col-md-12 text-center">
             <h2  class="text-9xl font-size: 8rem; /* 128px */
-line-height: 1;">FarmaciaGamalex</h2>
+line-height: 1;">Farmacia Gamalex</h2>
             <p class="sub-title pad-bt15">Bienvenidos disfruten esta visita<br>Imágenes de la farmacia Gamalex.</p>
             <hr class="bottom-line">
           </div>
