@@ -106,10 +106,15 @@
             <label for="Productos" class="form_label">Seleccione la imagen:</label>
        
             <input type="file" accept="image/jpeg"  name="Imagen"/>
+            
             -->
+            <br>
         </div>
-                    <input class="form_input" type="submit" class="form_submit" value="Guardar"  href="index.php" onclick="return foo();">
-                    <a style="color:blue"><~ Regresar</a>
+        
+                    <input style="width: 300px;" class="form_submit" type="submit" class="form_submit" value="Guardar"  href="index.php" onclick="return foo();">
+                    <br><br>
+                    <a style="color:blue" href="index.php"><~ Regresar</a>
+
                 </div>
             </form>
         </div>

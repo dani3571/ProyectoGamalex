@@ -14,7 +14,7 @@
                         <div class="px-8">
                         <div class="h-16 w-full flex items-center">
                             
-                        <img style="margin-top:13px" width="70" src="../Imagenes/logoGamalex.png">
+                        <img style="margin-top:13px" width="70" src="../Imagenes/logoGamalex.png" >
                    
                         <h1 style="font-size: 30px; color:white; margin-left:10px; margin-top:10px"> Gamalex</h1>  
                             

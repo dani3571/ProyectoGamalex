@@ -87,11 +87,10 @@
                 <div class="formulario">
                 <div class="crear">
                     <a class="link_crear" href="CrearNuevaVenta.php">CREAR</a>
-                </div>
-                <br>
-                <div class="crear">
-                    <button class="link_crear" id="GenerarReporte" >Reporte de ventas</button>
-                </div>
+                    <button style="margin-left: 2px;" class="link_crear" id="GenerarReporte" >Reporte de ventas</button>
+                </div>  
+             
+            
                 <table class="tabla">
                     <thead>
                         <tr>

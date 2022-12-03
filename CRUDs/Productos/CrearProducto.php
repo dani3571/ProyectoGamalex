@@ -315,22 +315,16 @@ h1 {
                                 <label for="Productos" class="form_label">Tipo Unidad:</label>
                             </div>
                             <div class="form_group">
-
-                      
-                    </div>
-
+                                    </div>
                             <div  class="from"  >
-            <label for="Productos" class="form_label">Seleccione la imagen:</label>
        
-            <input type="file" accept="image/jpeg" name="Imagen"/>
+              <input type="file" accept="image/jpeg" name="Imagen"/>
         </div>
                             
-                        <input type="submit" class="form_submit" onclick="return foo();"  value="Guardar"  >
-                </div>
-               
+              <input class = "form_submit" type="submit" onclick="return foo();"  value="Guardar"  >
+              <a style="color:blue" href="index.php"><~ Regresar</a>
+            </div>
             </form>
-           
-    
     </body>
     
 </html>

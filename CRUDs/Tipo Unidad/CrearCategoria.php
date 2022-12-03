@@ -36,7 +36,8 @@
                   
                             
                         <input type="submit" class="form_submit" onclick="return foo();"  value="Guardar"  >
-                </div>
+                         <a style="color:blue" href="index.php"><~ Regresar</a>
+                    </div>
                
             </form>
            

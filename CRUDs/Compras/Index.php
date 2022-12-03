@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="../css/newStyles.css">
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<link href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
+     <link href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
     <script src="assets/swal2/sweetalert2.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -46,7 +46,9 @@
                             <th>FechaCompra</th>
                             <th>PrecioTotalCompra</th>
                             <th>CantidadCompra</th>
-                            
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     
@@ -69,7 +71,7 @@
                 <th><?php  echo $row['PrecioTotalCompra']?></th>
                 <th><?php  echo $row['CantidadCompra']?></th>
                 <td> 
-                <th><a href="detalleCompra.php?id=<?php echo $row['IdCompra'] ?>" class="link_editar">Detalle Compra</a></th>
+                <th><a href="detalleCompra.php?id=<?php echo $row['IdCompra'] ?>" class="link_editar">Detalle</a></th>
                 <th><a style ="cursor :pointer"class="link_eliminar" id="delete_laboratory1" data-id="<?php echo $IdCompra; ?>" >Eliminar</i></a></th>		
 			</td>
 		        </tr>

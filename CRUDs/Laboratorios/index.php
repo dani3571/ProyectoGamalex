@@ -84,7 +84,6 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
       $query = "SELECT * FROM Laboratorio where Estado=1";
 			$stmt = $DBcon->prepare($query);
 			$stmt->execute();
-
       $db = conectar();
       $query2=$db->query("select * from laboratorio");//cambiar select*from 
       $laboratorio = array();//productos
@@ -209,11 +208,7 @@ $("#GenerarReporte").click(function(){
   var columns = ["Nombre", "Direccion", "Nombre Encargado", "Telefono", "Estado"];
   var data = [
 <?php foreach($laboratorio as $c):?>
- ["<?php echo $c->Nombre; ?>", 
- "<?php echo $c->Direccion; ?>", 
- "<?php echo $c->NombreEncargado; ?>", 
- "<?php echo $c->TelefonoEncargado; ?>", 
- "<?php   
+ ["<?php echo $c->Nombre; ?>", "<?php echo $c->Direccion; ?>", "<?php echo $c->NombreEncargado; ?>", "<?php echo $c->TelefonoEncargado; ?>", "<?php   
   if($c->Estado == 0)
     echo $c->Estado="Inactivo";
   else
@@ -230,7 +225,7 @@ $("#GenerarReporte").click(function(){
     tableLineWidth: 0.1,
     headStyles:{fillColor:[35, 35, 37]}
     
-    
+
     }
   );
   pdf.save('ReporteLaboratorios.pdf');
@@ -239,9 +234,7 @@ $("#GenerarReporte").click(function(){
 </script>
 </html>
     </div>
-
-
-   <?php
+ <?php
   include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/S.php");
-   ?>
+  ?>
 

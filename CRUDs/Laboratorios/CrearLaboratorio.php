@@ -108,7 +108,7 @@
     
     </script>
         <?php
-       include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/footer.php");
+      // include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/footer.php");
        ?>
     </body>
     

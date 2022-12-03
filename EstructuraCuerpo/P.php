@@ -13,9 +13,14 @@
                      
                         <div class="h-16 w-full flex items-center">
                             
+                            <img style="margin-top:13px" width="70" src="/Imagenes/logoGamalex.png">
+                       
                             <h1 style="font-size: 30px; color:white; margin-left:10px; margin-top:10px"> Gamalex</h1>  
                                 
                            </div>
+
+
+
                             <ul class="mt-12">
                                 <li class="flex w-full justify-between text-gray-300 cursor-pointer items-center mb-6">
                                     <a href="/ProyectoGamalex/Reportes/dashBoard.php" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">

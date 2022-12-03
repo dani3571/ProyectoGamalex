@@ -59,6 +59,7 @@
                     </div>
                     <input type="submit" class="form_submit" value="Guardar">
 
+                    <a style="color:blue" href="index.php"><~ Regresar</a>
                     
                 </div>
             </form>

@@ -34,10 +34,9 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
                     <thead>
                         <tr>
                         <th>IdCategoria</th>
-                            <th>Nombre de la Categoria</th>
-                            
+                        <th>Nombre de la Categoria</th>    
                         <th></th>
-                            <th></th>
+                        <th></th>
                             
 
                         </tr>
@@ -63,9 +62,6 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
                <tr>
 		        <th><?php echo $IdCategoria; ?></th>
                 <th><?php echo $NombreC; ?></th>
-               
-                
-        
                
                 <th><a class="link_editar" href="actualizarCategoria.php?id=<?php echo $row['IdCategoria'] ?>">Editar</a></th>
                 <th><a class="link_eliminar" href="eliminarCategoria.php?id=<?php echo $row['IdCategoria'] ?>">Deshabilitar</a></th>
