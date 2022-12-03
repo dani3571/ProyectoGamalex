@@ -68,7 +68,7 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
         
                
                 <th><a class="link_editar" href="actualizarCategoria.php?id=<?php echo $row['IdCategoria'] ?>">Editar</a></th>
-                <th><a class="link_eliminar" href="eliminarProducto.php?id=<?php echo $row['IdCategoria'] ?>">Deshabilitar</a></th>
+                <th><a class="link_eliminar" href="eliminarCategoria.php?id=<?php echo $row['IdCategoria'] ?>">Deshabilitar</a></th>
           
 		        </tr>
 				<?php

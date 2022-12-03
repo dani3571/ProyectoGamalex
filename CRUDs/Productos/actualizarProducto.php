@@ -31,7 +31,7 @@
         </div>
         <div class="form">
         <form action="./updateProducto.php" method="POST" enctype="multipart/form-data" >
-                <h2 class="form_title">Ingrese datos de la Categoria</h2>
+                <h2 class="form_title">Ingrese datos del producto</h2>
                 <div class="form_container">
                 <input class="form_input" type="hidden" name="IdProducto" value="<?php echo $row2['IdProducto']  ?>">
                     <div class="form_group">
@@ -89,7 +89,7 @@
                             </div>
                             <div class="form_group">
                                 <select id="NombreU" class="form_input" name="NombreU">
-                                    <option disabled="disabled" selected="true" > <?php echo $row2['NombreU']  ?></option>
+                                    <option  selected="true" > <?php echo $row2['NombreU']  ?></option>
                                     <?php
                                         while($unidades = mysqli_fetch_array($query6)){
                                     ?>
@@ -108,8 +108,8 @@
             <input type="file" accept="image/jpeg"  name="Imagen"/>
             -->
         </div>
-                    <input class="form_input" type="submit" class="form_submit" value="Guardar">
-                    <a style="color:blue" href="index.php"><~ Regresar</a>
+                    <input class="form_input" type="submit" class="form_submit" value="Guardar"  href="index.php" onclick="return foo();">
+                    <a style="color:blue"><~ Regresar</a>
                 </div>
             </form>
         </div>
@@ -117,18 +117,10 @@
     </body>
 </html>
 <script>
-/*
-try {function calculate() {
-var myBox1 = document.getElementById('Cantidad').value; 
-var myBox2 = document.getElementById('PrecioUnidad').value;
-var result = document.getElementById('PrecioTotalProducto'); 
-var myResult = myBox1 * myBox2;
-result.value = myResult;
-
-
+ function foo() {
+   alert("Modificacion exitosa");
+   return true;
 }
-} catch (error) { throw error; } 
-*/
 </script>
 
 

@@ -37,10 +37,11 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
             <div class="formulario">
                 <div class="crear">
                     <a class="link_crear" href="./CrearProducto.php">CREAR</a>
+                    <a class="link_crear" href="./Reponer.php">Habilitar un producto</a>
                     <button style="margin-left:2px;" class="link_crear" id="GenerarReporte" class="btn btn-default">Reporte</button>
                 </div>
                  
-                    <button style="margin-left:2px;" class="link_crear" id="GenerarReporte" class="btn btn-default">Reporte</button>
+                    
                
               
 		
@@ -106,7 +107,7 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
                 <th><a class="link_editar" href="actualizarProducto.php?id=<?php echo $row['IdProducto'] ?>">Editar</a></th>
                 <th><a class="link_eliminar" href="eliminarProducto.php?id=<?php echo $row['IdProducto'] ?>">Deshabilitar</a></th>
                 <th><a class="link_editar" href="actualizarimagen.php?id=<?php echo $row['IdProducto'] ?>">imagen</a></th>
-                
+               
           
 		        </tr>
 				<?php
@@ -184,14 +185,14 @@ $("#GenerarReporte").click(function(){
   const fecha = new Date();
   pdf.text(20,20,"Reporte de Productos");
   pdf.text(11,11,"<?php echo "Fecha del reporte: ". date(" d/m/Y")?>");
-  var columns = ["Nombre", "Cantidad", "PrecioUnidad", "PrecioTotalProducto", "Descripcion","Estado","NombreC"];
+  var columns = ["Nombre", "Cantidad", "PrecioUnidad", "PrecioTotalProducto","Estado","NombreC","NombreU"];
   var data = [
 <?php foreach($laboratorio as $c):?>
- ["<?php echo $c->Nombre; ?>", "<?php echo $c->Cantidad; ?>", "<?php echo $c->PrecioUnidad; ?>", "<?php echo $c->PrecioTotalProducto; ?>","<?php echo $c->Descripcion; ?>","<?php  if($c->Estado == 0)
+ ["<?php echo $c->Nombre; ?>", "<?php echo $c->Cantidad; ?>", "<?php echo $c->PrecioUnidad; ?>", "<?php echo $c->PrecioTotalProducto; ?>","<?php  if($c->Estado == 0)
     echo $c->Estado="Inactivo";
   else
     echo $c->Estado= "Activo";
-   ?>","<?php echo $c->NombreC; ?>" ],
+   ?>","<?php echo $c->NombreC; ?>","<?php echo $c->NombreU; ?>" ],
    
   
 <?php endforeach; ?>  

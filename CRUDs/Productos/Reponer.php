@@ -39,7 +39,7 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
       <!--Aqui debe estar el header-->
         <div class="main-container">
             <div class="titulo">
-                <h1>Cambio de estado de Laboratorios</h1>
+                <h1>Cambio de estado de Los productos</h1>
             </div>
             <!--
             <div class="estado">
@@ -74,7 +74,7 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
                     <?php
 			
 			require_once '../Laboratorios/dbcon.php';
-			$query = "SELECT * FROM producto where Estado=1";
+			$query = "SELECT * FROM producto where Estado=0";
 			$stmt = $DBcon->prepare($query);
 			$stmt->execute();
 			
@@ -102,7 +102,7 @@ include("/xampp/htdocs/ProyectoGamalex/EstructuraCuerpo/P.php");
         
                
                 <th><a class="link_editar" href="actualizarProducto.php?id=<?php echo $row['IdProducto'] ?>">Editar</a></th>
-                <th><a class="link_eliminar" href="eliminarProducto.php?id=<?php echo $row['IdProducto'] ?>">Habilitar</a></th>
+                <th><a class="link_eliminar" href="ReponerProducto.php?id=<?php echo $row['IdProducto'] ?>">Habilitar</a></th>
                
                 
           
