@@ -8,9 +8,5 @@
     $Cantidad = $_POST["Cantidad"];
     $sql="INSERT INTO venta (IdUsuario, IdCliente, Estado, FechaVenta, Cantidad) VALUES ($IdUsuario,$IdCliente,$Estado,'$FechaVenta',$Cantidad)";
     $query= mysqli_query($con,$sql);
-    if($query){
-        Header("Location: Index.php");
-    }else {
-        
-    }
+    
 ?>

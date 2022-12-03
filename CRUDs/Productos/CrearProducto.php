@@ -212,7 +212,11 @@ h1 {
     include("../conexion.php");
     $con=conectar();
     $sql4 = "SELECT * FROM laboratorio";
-    $query4 = mysqli_query($con,$sql4); 
+    $query4 = mysqli_query($con,$sql4);
+    $sql5 = "SELECT * FROM categoria";
+    $query5 = mysqli_query($con,$sql5); 
+    $sql6 = "SELECT * FROM unidades";
+    $query6 = mysqli_query($con,$sql6); 
     ?>
     <body>
     <div class="header-container">
@@ -240,11 +244,13 @@ h1 {
                         <label for="PrecioUnidad" class="form_label">Precio Unidad:</label>
                         <span class="form_line"></span>
                     </div>
+                        
                     <div class="form_group">
                         <input type="text" id="PrecioTotalProducto" class="form_input" placeholder=" " name="PrecioTotalProducto" readonly required >
                         <label for="PrecioTotal" class="form_label">Precio total:</label>
                         <span class="form_line"></span>
                     </div>
+                   
                     <div class="form_group">
                         <input type="text" id="Descripcion" class="form_input" placeholder=" " name="Descripcion" >
                         <label for="Descripcion" class="form_label">Descripcion:</label>
@@ -270,14 +276,53 @@ h1 {
                                 <label for="Productos" class="form_label">IdLaboratorio:</label>
                             </div>
                             <div class="form_group">
+                        
+                    </div>
+                     <!--Listado Categorias -->                   
+                    <div class="form_group">
+                                <select id="NombreC" class="form_input" name="NombreC">
+                                    <option>--Seleccione el Nombre--</option>
+                                    <?php
+                                        while($categoria = mysqli_fetch_array($query5)){
+                                    ?>
+                                        <option><?php  echo $categoria['NombreC']?> </option>   
+                                       
+                                    <?php 
+                                        }
+                                    ?> 
+                                </select>
+                                <label for="Productos" class="form_label">Categoria:</label>
+                            </div>
+                            <div class="form_group">
                         <input type="date" id="Vencimiento" class="form_input" placeholder=" " name="Vencimiento" >
                         <label for="Vencimiento" class="form_label">fechaVencimiento:</label>
                         <span class="form_line"></span>
                     </div>
+
+                     <!--Listado unidades -->  
+                     <div class="form_group">
+                                <select id="NombreU" class="form_input" name="NombreU">
+                                    <option>--Seleccione el Nombre del tipo de unidad--</option>
+                                    <?php
+                                        while($categoria = mysqli_fetch_array($query6)){
+                                    ?>
+                                        <option><?php  echo $categoria['NombreU']?> </option>   
+                                       
+                                    <?php 
+                                        }
+                                    ?> 
+                                </select>
+                                <label for="Productos" class="form_label">Tipo Unidad:</label>
+                            </div>
+                            <div class="form_group">
+
+                      
+                    </div>
+
                             <div  class="from"  >
             <label for="Productos" class="form_label">Seleccione la imagen:</label>
        
-            <input type="file" name="Imagen"/>
+            <input type="file" accept="image/jpeg" name="Imagen"/>
         </div>
                             
                         <input type="submit" class="form_submit" onclick="return foo();"  value="Guardar"  >

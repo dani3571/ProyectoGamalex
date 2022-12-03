@@ -247,7 +247,10 @@ h1 {
         document.getElementById("reporteg1").style.display = "block"    
         document.getElementById("reporteg2").style.display = "none" 
         document.getElementById("reporteg3").style.display = "none"   
-      }
+        document.getElementById("Rdia").style.display= "block";  
+        document.getElementById("R_año").style.display = "none";
+        document.getElementById("Rmes").style.display = "none";
+    }
       if(document.getElementById('reporte').value == m){
          x.style.display = "none";
          document.getElementById("table3").style.display = "none";
@@ -255,7 +258,9 @@ h1 {
          document.getElementById("reporteg1").style.display = "none"
          document.getElementById("reporteg3").style.display = "none"        
          document.getElementById("table2").style.display = "table"; 
-         
+         document.getElementById("Rdia").style.display= "none";
+        document.getElementById("Rmes").style.display = "block";
+        document.getElementById("R_año").style.display = "none";  
        }
        if(document.getElementById('reporte').value == a){
          x.style.display = "none";
@@ -263,7 +268,10 @@ h1 {
          document.getElementById("table3").style.display = "table"; 
          document.getElementById("reporteg1").style.display = "none"
          document.getElementById("reporteg2").style.display = "none" 
-         document.getElementById("reporteg3").style.display = "block"              
+         document.getElementById("reporteg3").style.display = "block"
+         document.getElementById("Rdia").style.display= "none";  
+        document.getElementById("R_año").style.display = "block";
+        document.getElementById("Rmes").style.display = "none";
        }
     }
 
@@ -282,9 +290,25 @@ h1 {
     </div>
 
         <div class="main-container">
-      
-            <div class="titulo">
-           
+<!--1-->      
+            <div class="titulo" id="Rdia">
+             <h3 style="font-size: 40px;">Reporte del dia: <?php
+          $dias = array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+          echo "".$dias[date("w")];
+             ?></h3>
+            </div>
+<!--2-->
+            <div style="display:none;" class="titulo" id="Rmes">
+             <h3 style="font-size: 40px">Reporte del mes: <?php
+              echo "Diciembre";
+             ?></h3>
+            </div>
+
+            <!--3-->
+            <div style="display:none;" class="titulo" id="R_año">
+             <h3 style="font-size: 40px;">Reporte del año: <?php
+              echo "2023";
+             ?></h3>
             </div>
             <div class="formulario">
                 <table name= "table" id="table" class="tabla">

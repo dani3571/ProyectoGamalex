@@ -10,7 +10,7 @@
 </head>
 <body>
     <?php
-    include("../EstructuraCuerpo/header.php");
+    include("../EstructuraCuerpo/headerVisible.php");
     ?>
     
     <div class="bg-white">

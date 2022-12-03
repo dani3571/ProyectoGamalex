@@ -12,8 +12,13 @@
                     <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
                     <div style="min-height: 816px" class="w-64 absolute sm:relative bg-gray-800 shadow md:h-full flex-col justify-between hidden sm:flex">
                         <div class="px-8">
-                         <h1 style="font-size: 40px; color:antiquewhite;">Farmacia Gamalex</h1>
-                         
+                        <div class="h-16 w-full flex items-center">
+                            
+                        <img style="margin-top:13px" width="70" src="../Imagenes/logoGamalex.png">
+                   
+                        <h1 style="font-size: 30px; color:white; margin-left:10px; margin-top:10px"> Gamalex</h1>  
+                            
+                       </div>
                             <ul class="mt-12">
                                 <li class="flex w-full justify-between text-gray-300 cursor-pointer items-center mb-6">
                                     <a href="javascript:void(0)" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
@@ -312,10 +317,10 @@
                     <!-- Remove class [ h-64 ] when adding a card block -->
                     <div class="container mx-auto py-10 h-64 md:w-4/5 w-11/12 px-6">
                         <!-- Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
-                    
+                        <h1 style="font-family: nunito,arial,verdana; font-size:30px">Reporte del dia</h1>
                         <div class="w-full h-full rounded border-dashed border-2 border-gray-300">
                             <!-- Place your content here -->
-                
+                          
                             <div class=" mt-8 grid lg:grid-cols-3 sm:grid-cols-2 p-4 gap-10 ">
             <!--Grid starts here-->
               <?php
@@ -472,25 +477,26 @@
 <style>
    #posicion{
     position: absolute;
-    top: 265px;
+    top: 295px;
     left: 940;
    }
    
    #posicion2{
     position: absolute;
-    top: 265px;
+    top: 295px;
     left: 430;
    }
    #posicion3{
     position: absolute;
-    top: 530px;
+    top: 545px;
     left: 430;
    }
    #posicion4{
     position: absolute;
-    top: 530px;
+    top: 545px;
     left: 1040;
    }
+   
 </style>
 <br>
 <button onclick="window.location= '../CRUDs/Reportes/reportes.php'" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">

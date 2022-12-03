@@ -5,14 +5,14 @@
     $query1=mysqli_query($con,$sql1);
     $numeroVenta=mysqli_fetch_array($query1);
 
-    $sql2 = "SELECT * FROM producto";
+    $sql2 = "SELECT * FROM producto where Estado = 1";
     $query2 = mysqli_query($con,$sql2);
-    $sql3 = "SELECT * FROM producto";
+    $sql3 = "SELECT * FROM producto where Estado = 1";
     $query3 = mysqli_query($con,$sql3); 
-    $sql4 = "SELECT * FROM producto";
+    $sql4 = "SELECT * FROM producto where Estado = 1";
     $query4 = mysqli_query($con,$sql4);
     
-    $sql5 = "SELECT * FROM producto";
+    $sql5 = "SELECT * FROM producto where Estado = 1";
     $query5 = mysqli_query($con,$sql5);
                  
 ?>
@@ -27,6 +27,36 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
         <script src="https://cdn.tailwindcss.com"></script>     
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <link href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+		    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="sweetalert2.min.js"></script>
+        <link rel="stylesheet" href="sweetalert2.min.css">
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+       <script src="../jspdf/dist/jspdf.min.js"></script>
+       <script src="../js/jspdf.plugin.autotable.min.js"></script>
+       
+        <style>
+          .estado { 
+           font-size: 20px;
+           margin-left: 690px;
+           margin-top: 1px;
+           padding-top: 1px;
+          }
+
+        </style>
+        <script>
+            function sumarCantidad(){
+                let tablaDatos = document.getElementById('tablaContenido').children;
+                var cantidades = 0;
+                for (var p = 0; p < tablaDatos.length; p++) {
+                    cantidades += tblDatos[i].children[3].innerHTML;
+                }
+                return cantidades;
+            }
+        </script>
        <script>
             $(document).ready(
                 function(){
@@ -38,6 +68,10 @@
             );
             $(document).on('submit','#evento_formulario',function(event){
                 event.preventDefault();
+                if(contador!=0)
+                {
+
+                
                 let nit = document.getElementById('NIT').value.toString();
                 let apellido = document.getElementById('Apellido').value;
                 if(nit!=0&&apellido!="")
@@ -50,11 +84,11 @@
                 }
                 let tblDatos = document.getElementById('tablaContenido').children;
                 var fechaVenta = document.getElementById('Fecha').value;
-                var cantidad = parseInt(document.getElementById('Total').innerHTML);
+                var cantidadTotal = parseInt(document.getElementById('cantidadSumada').value);
                 $.ajax({
                         url: "insertarNuevaVenta.php",
                         method: "post",
-                        data: {FechaVenta : fechaVenta, Cantidad: cantidad}
+                        data: {FechaVenta : fechaVenta, Cantidad: cantidadTotal}
                 })
                 for (var i = 0; i < tblDatos.length; i++) {
                     var idVenta = document.getElementById('numeroVenta').value;
@@ -67,27 +101,41 @@
                     $.ajax({
                         url: "insertarDetalleVenta.php",
                         method: "post",
-                        data: {IdVenta: idVenta, IdProducto : idProducto, Cantidad: cantidad}
+                        data: {IdVenta: idVenta, IdProducto : idProducto, Cantidad: cantidad},
+                         success:function(r){
+                             if(r==1)
+                             {
+                                alertaN();
+                             }else{
+                                alertaa();
+                                  
+                             }
+                         }
                     })
                 }
-                window.location.href = "Index.php";
-                /*let longitud = tblDatos.length;
-                for (var i = 0; i < longitud; i++) {
-                    console.log(tblDatos[0].remove());
-                }
-                document.getElementById('Total').innerHTML = 0;
-                document.getElementById('Productos').selectedIndex = 0;
-                document.getElementById('CantidadDisponible').selectedIndex = 0;
-                document.getElementById('IdProducto').selectedIndex = 0;
-                document.getElementById('PrecioIndividual').selectedIndex = 0;
-                document.getElementById('Cantidad').selectedIndex = 0;
-                document.getElementById('NIT').value = 0;
-                document.getElementById('Apellido').value = "";
-                //document.getElementById('cantidadSumada').value = 0;
-                //jQuery(document).load(window.location.href);
-                //window.location.reload();*/
-                
+            }
+            else
+            {
+                alert("Debe escoger un producto");
+            }
             });
+            function alertaa(){   
+            Swal.fire({
+			title: 'Venta registrado',
+			text: "La venta se registro con exito",
+			icon: 'success',
+		}).then(function(){
+            window.location.href = 'index.php'; 
+        });	
+            frmajax.reset(); 
+        }
+        function alertaN(){
+        Swal.fire({
+			title: 'La venta no se registro',
+			text: "Oops no se logro registrar la venta",
+			icon: 'success',
+		})
+        }
             $(document).ready(
                 function funcionInicial(){
                     contador = 0;
@@ -102,24 +150,36 @@
                                 }
                                 else
                                 {
-                                    let tblDatos = document.getElementById('tablaContenido').insertRow(contador);
-                                    contador++;
-                                    let IdProducto = tblDatos.insertCell(0);
-                                    let Productos = tblDatos.insertCell(1);
-                                    let Precio = tblDatos.insertCell(2);
-                                    let Cantidad = tblDatos.insertCell(3);
-                                    let PrecioTotal = tblDatos.insertCell(4);
-                                    let Eliminar = tblDatos.insertCell(5);
-                                    IdProducto.innerHTML = document.getElementById('IdProducto').value;
-                                    Productos.innerHTML = document.getElementById('Productos').value;
-                                    Precio.innerHTML = document.getElementById('PrecioIndividual').value;
-                                    Cantidad.innerHTML = document.getElementById('Cantidad').value;
-                                    PrecioTotal.innerHTML = document.getElementById('PrecioTotal').value;
-                                    Eliminar.classList.add('link_eliminar')
-                                    Eliminar.innerHTML = "Eliminar";
-                                    document.getElementById('Total').innerHTML = (parseFloat(document.getElementById('Total').innerHTML) + parseFloat(document.getElementById('PrecioTotal').value)).toString();
-                                    
-                                    //document.getElementById('cantidadSumada').value = (parseInt(document.getElementById('cantidadSumada').value)) + (parseInt(document.getElementById('Cantidad').value));
+                                    if(parseInt(document.getElementById('CantidadDisponible').options[document.getElementById("CantidadDisponible").selectedIndex].text) <document.getElementById('Cantidad').value)
+                                    {
+                                        alert("Introduzca una cantidad menor");
+                                    }
+                                    else
+                                    {
+                                        let tblDatos = document.getElementById('tablaContenido').insertRow(contador);
+                                        contador++;
+                                        let IdProducto = tblDatos.insertCell(0);
+                                        let Productos = tblDatos.insertCell(1);
+                                        let Precio = tblDatos.insertCell(2);
+                                        let Cantidad = tblDatos.insertCell(3);
+                                        let PrecioTotal = tblDatos.insertCell(4);
+                                        let Eliminar = tblDatos.insertCell(5);
+                                        let Indice = tblDatos.insertCell(6);
+                                        IdProducto.innerHTML = document.getElementById('IdProducto').value;
+                                        Productos.innerHTML = document.getElementById('Productos').value;
+                                        Precio.innerHTML = document.getElementById('PrecioIndividual').value;
+                                        Cantidad.innerHTML = document.getElementById('Cantidad').value;
+                                        PrecioTotal.innerHTML = document.getElementById('PrecioTotal').value;
+                                        Indice.classList.add('Indice')
+                                        Indice.innerHTML = document.getElementById("CantidadDisponible").selectedIndex;
+                                        Eliminar.classList.add('link_eliminar')
+                                        Eliminar.innerHTML = "Eliminar";
+                                        document.getElementById('Total').innerHTML = (parseFloat(document.getElementById('Total').innerHTML) + parseFloat(document.getElementById('PrecioTotal').value)).toString();
+                                        document.getElementById('cantidadSumada').value = (parseInt(document.getElementById('cantidadSumada').value)) + (parseInt(document.getElementById('Cantidad').value));
+                                        let index = document.getElementById("CantidadDisponible").selectedIndex;
+                                        document.getElementById('CantidadDisponible').options[index].text = (document.getElementById("CantidadDisponible").value - document.getElementById("Cantidad").value).toString();
+                                        
+                                    }
                                 }
                             }
                             else
@@ -174,7 +234,10 @@
                         console.log($(this).parent().index());
                         document.getElementById('Total').innerHTML = (parseFloat(document.getElementById('Total').innerHTML) - document.getElementById('tablaContenido').children[$(this).parent().index()].children[4].innerHTML).toString();
                         document.getElementById('Cantidad').innerHTML = (parseFloat(document.getElementById('Cantidad').innerHTML) - document.getElementById('tablaContenido').children[$(this).parent().index()].children[3].innerHTML).toString();
-                        //document.getElementById('cantidadSumada').value = (parseInt(document.getElementById('cantidadSumada').value)) - (parseInt(document.getElementById('tablaContenido').children[$(this).parent().index()].children[3].innerHTML).toString());
+                        document.getElementById('cantidadSumada').value = (parseInt(document.getElementById('cantidadSumada').value)) - (parseInt(document.getElementById('tablaContenido').children[$(this).parent().index()].children[3].innerHTML).toString());
+                        var ind = parseInt((document.getElementById('tablaContenido').children[$(this).parent().index()].children[6].innerHTML).toString());
+                        document.getElementById('CantidadDisponible').options[ind].text = parseInt(document.getElementById('CantidadDisponible').options[ind].text.toString()) + parseInt(document.getElementById('tablaContenido').children[$(this).parent().index()].children[3].innerHTML.toString());
+                        console.log(ind);
                         $(this).parent().remove();
                         contador--;
                     })
